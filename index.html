@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modario — Outfit planning made effortless</title>
+    <meta
+      name="description"
+      content="Modario is a fashion technology app that helps you choose and plan outfits in seconds. Join the waitlist for priority access."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-content">
+          <p class="eyebrow">Modario — fashion technology for everyday confidence</p>
+          <h1 id="hero-heading">62% of people struggle to choose what to wear in the morning.</h1>
+          <p class="subtext">
+            Decision fatigue is real.<br />
+            Your wardrobe shouldn’t stress you out.
+          </p>
+          <p class="product-statement"><strong>Modario helps you plan outfits in seconds.</strong></p>
+
+          <form class="waitlist-form" aria-label="Join the Modario waitlist">
+            <label class="sr-only" for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="Enter your email" required />
+            <button type="submit">Join the Waitlist</button>
+          </form>
+          <p class="microcopy">Be the first to try Modario when we launch.</p>
+          <p class="secondary-line">Early users get priority access.</p>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="photo-surface">
+            <div class="wardrobe-backdrop"></div>
+            <div class="outfits">
+              <article class="outfit-card business">
+                <span class="outfit-type">Business Casual</span>
+                <div class="garment blazer"></div>
+                <div class="garment shirt"></div>
+                <div class="garment pants"></div>
+              </article>
+              <article class="outfit-card casual">
+                <span class="outfit-type">Casual Everyday</span>
+                <div class="garment jacket"></div>
+                <div class="garment tee"></div>
+                <div class="garment denim"></div>
+              </article>
+              <article class="outfit-card evening">
+                <span class="outfit-type">Elegant Evening</span>
+                <div class="garment top"></div>
+                <div class="garment skirt"></div>
+                <div class="garment heels"></div>
+              </article>
+            </div>
+
+            <div class="ui-chip chip-today">Suggested outfit for today</div>
+            <div class="ui-chip chip-friday">Planned for Friday</div>
+            <div class="ui-chip chip-style">Matches your style profile</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features" aria-label="Modario feature preview">
+        <article class="feature">
+          <div class="icon" aria-hidden="true">✦</div>
+          <h2>Smart Outfit Suggestions</h2>
+          <p>Personalized outfits based on your style.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon" aria-hidden="true">◻</div>
+          <h2>Wardrobe Management</h2>
+          <p>Digitize your wardrobe and organize your clothes.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon" aria-hidden="true">⟳</div>
+          <h2>Outfit Planning</h2>
+          <p>Plan outfits for the week and get reminders.</p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
