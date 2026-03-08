@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="./runtime-config.js"></script>
     <script>
       window.MODARIO_SUPABASE = window.MODARIO_SUPABASE || {
         url: 'https://bcaajafisvrttvinjfad.supabase.co',
@@ -181,15 +182,8 @@
     const supabaseUrl = supabaseConfig.url || '';
     const supabaseAnonKey = supabaseConfig.anonKey || '';
 
-    const supabase = supabaseUrl && supabaseAnonKey
-      ? createClient(supabaseUrl, supabaseAnonKey, {
-          global: {
-            headers: {
-              Authorization: `Bearer ${supabaseAnonKey}`,
-            },
-          },
-        })
-      : null;
+    const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
+    const debugResponses = Boolean(supabaseConfig.debugResponses);
 
     const setFormStatus = (message, state) => {
       if (!statusElement) return;
@@ -287,10 +281,16 @@
 
           const successDetails = toDebugString(data) || 'No response body';
           waitlistForm.reset();
-          setFormStatus(`Success response: ${successDetails}`, 'success');
+          setFormStatus(
+            debugResponses ? `Success response: ${successDetails}` : 'Success! You have been added to the waitlist.',
+            'success',
+          );
         } catch (error) {
           const errorDetails = buildErrorDetails(error);
-          setFormStatus(`Error response: ${errorDetails}`, 'error');
+          setFormStatus(
+            debugResponses ? `Error response: ${errorDetails}` : 'We could not submit your email. Please try again.',
+            'error',
+          );
           console.error('Waitlist submission failed:', error);
         } finally {
           if (submitButton) {
