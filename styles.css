@@ -387,6 +387,30 @@ h3 {
   box-shadow: 0 0 0 4px rgba(138, 59, 87, 0.14);
 }
 
+.waitlist-form button:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
+.form-status {
+  margin-top: 0.75rem;
+  min-height: 1.3rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.form-status[data-state='pending'] {
+  color: rgba(26, 26, 26, 0.75);
+}
+
+.form-status[data-state='success'] {
+  color: #1f7a37;
+}
+
+.form-status[data-state='error'] {
+  color: #9c1f1f;
+}
+
 footer {
   margin-bottom: 2rem;
   padding: 1rem 0;
