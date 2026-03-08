@@ -63,12 +63,6 @@
                 alt="Next date outfit preview"
               />
             </figure>
-            <figure class="mornings-gallery-item">
-              <img
-                src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=1200&q=80"
-                alt="Planned for Friday outfit preview"
-              />
-            </figure>
           </div>
           <div class="mornings-gallery-controls" aria-label="Scroll outfit previews">
             <button type="button" class="gallery-btn" data-scroll="prev" aria-label="Scroll left">←</button>
@@ -142,25 +136,6 @@
           <article class="testimonial card-lift">
             <p>“Modario is just what I’ve been waiting for.”</p>
             <span>— John Sam Bruce</span>
-          </article>
-        </div>
-      </section>
-
-      <section class="feature-strip reveal" aria-labelledby="features-title">
-        <p class="eyebrow">Features</p>
-        <h2 id="features-title">Simple tools for getting dressed.</h2>
-        <div class="feature-grid">
-          <article class="feature card-lift">
-            <h3>Smart Suggestions</h3>
-            <p>Looks based on your style.</p>
-          </article>
-          <article class="feature card-lift">
-            <h3>Digital Wardrobe</h3>
-            <p>Organize everything visually.</p>
-          </article>
-          <article class="feature card-lift">
-            <h3>Outfit Planning</h3>
-            <p>Plan ahead in minutes.</p>
           </article>
         </div>
       </section>
@@ -327,13 +302,44 @@
     }
 
     if (morningsTrack) {
+      const originalSlides = Array.from(morningsTrack.children);
+      const cloneCount = originalSlides.length;
+
+      originalSlides.forEach((slide) => {
+        const clone = slide.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        morningsTrack.appendChild(clone);
+      });
+
+      const getSlideWidth = () => {
+        const gapValue = Number.parseFloat(window.getComputedStyle(morningsTrack).columnGap) || 0;
+        return morningsTrack.clientWidth + gapValue;
+      };
+
+      morningsTrack.addEventListener('scroll', () => {
+        const slideWidth = getSlideWidth();
+        const loopPoint = slideWidth * cloneCount;
+        if (morningsTrack.scrollLeft >= loopPoint) {
+          morningsTrack.scrollLeft -= loopPoint;
+        }
+      });
+
       scrollButtons.forEach((button) => {
         button.addEventListener('click', () => {
           const direction = button.dataset.scroll === 'next' ? 1 : -1;
-          const amount = morningsTrack.clientWidth;
+          const amount = getSlideWidth();
+
+          if (direction < 0 && morningsTrack.scrollLeft <= 0) {
+            morningsTrack.scrollLeft = getSlideWidth() * cloneCount;
+          }
+
           morningsTrack.scrollBy({ left: amount * direction, behavior: 'smooth' });
         });
       });
+
+      window.setInterval(() => {
+        morningsTrack.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
+      }, 3500);
     }
   </script>
 </body>

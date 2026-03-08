@@ -88,7 +88,7 @@ p {
 h1 {
   font-size: clamp(3rem, 14vw, 6rem);
   letter-spacing: -0.04em;
-  line-height: 0.98;
+  line-height: 1.04;
 }
 
 .hero-title {
@@ -102,10 +102,12 @@ h1 {
 
 .type-style {
   position: relative;
+  display: inline-block;
   width: 5ch;
   margin-inline: auto;
   white-space: nowrap;
   overflow: hidden;
+  padding-bottom: 0.08em;
   background: linear-gradient(110deg, #4d0026 0%, #7f2a4a 46%, #b66384 100%);
   background-size: 180% 100%;
   -webkit-background-clip: text;
@@ -123,7 +125,7 @@ h1 {
   top: 0.06em;
   right: 0;
   width: 0.08em;
-  height: 0.9em;
+  height: 0.86em;
   border-radius: 999px;
   background: rgba(102, 0, 51, 0.9);
   box-shadow: 0 0 12px rgba(138, 59, 87, 0.4);
