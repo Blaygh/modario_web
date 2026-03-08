@@ -206,7 +206,15 @@
     const supabaseUrl = supabaseConfig.url || '';
     const supabaseAnonKey = supabaseConfig.anonKey || '';
 
-    const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
+    const supabase = supabaseUrl && supabaseAnonKey
+      ? createClient(supabaseUrl, supabaseAnonKey, {
+          global: {
+            headers: {
+              Authorization: `Bearer ${supabaseAnonKey}`,
+            },
+          },
+        })
+      : null;
 
     const setFormStatus = (message, state) => {
       if (!statusElement) return;
@@ -281,7 +289,12 @@
           waitlistForm.reset();
           setFormStatus('Success! You have been added to the waitlist.', 'success');
         } catch (error) {
-          setFormStatus('We could not submit your email. Please try again.', 'error');
+          const message = error?.message || '';
+          if (message.includes('401')) {
+            setFormStatus('Submission is currently unauthorized. Please confirm the edge function allows public (anon) calls.', 'error');
+          } else {
+            setFormStatus('We could not submit your email. Please try again.', 'error');
+          }
           console.error('Waitlist submission failed:', error);
         } finally {
           if (submitButton) {
