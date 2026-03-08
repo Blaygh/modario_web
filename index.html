@@ -222,6 +222,30 @@
       statusElement.dataset.state = state;
     };
 
+    const toDebugString = (value) => {
+      if (value === null || value === undefined) return '';
+      if (typeof value === 'string') return value;
+      try {
+        return JSON.stringify(value);
+      } catch (_error) {
+        return String(value);
+      }
+    };
+
+    const buildErrorDetails = (error) => {
+      const details = [
+        error?.name ? `name=${error.name}` : null,
+        error?.message ? `message=${error.message}` : null,
+        error?.code ? `code=${error.code}` : null,
+        error?.status ? `status=${error.status}` : null,
+        error?.details ? `details=${toDebugString(error.details)}` : null,
+        error?.hint ? `hint=${error.hint}` : null,
+        error?.context ? `context=${toDebugString(error.context)}` : null,
+      ].filter(Boolean);
+
+      return details.length ? details.join(' | ') : 'Unknown error';
+    };
+
     const getMetadata = () => {
       const utmParams = {
         utm_source: pageUrl.searchParams.get('utm_source') || null,
@@ -278,7 +302,7 @@
         };
 
         try {
-          const { error } = await supabase.functions.invoke(functionName, {
+          const { data, error } = await supabase.functions.invoke(functionName, {
             body: payload,
           });
 
@@ -286,15 +310,12 @@
             throw error;
           }
 
+          const successDetails = toDebugString(data) || 'No response body';
           waitlistForm.reset();
-          setFormStatus('Success! You have been added to the waitlist.', 'success');
+          setFormStatus(`Success response: ${successDetails}`, 'success');
         } catch (error) {
-          const message = error?.message || '';
-          if (message.includes('401')) {
-            setFormStatus('Submission is currently unauthorized. Please confirm the edge function allows public (anon) calls.', 'error');
-          } else {
-            setFormStatus('We could not submit your email. Please try again.', 'error');
-          }
+          const errorDetails = buildErrorDetails(error);
+          setFormStatus(`Error response: ${errorDetails}`, 'error');
           console.error('Waitlist submission failed:', error);
         } finally {
           if (submitButton) {
