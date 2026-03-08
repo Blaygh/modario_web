@@ -13,6 +13,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script>
+      window.MODARIO_SUPABASE = window.MODARIO_SUPABASE || {
+        url: 'https://bcaajafisvrttvinjfad.supabase.co',
+        anonKey: 'sb_publishable_EzlbWXkh0hMbajPO63X6Vg_wvqTXvLh',
+        functionName: 'join-waitlist',
+      };
+    </script>
+    <script>
       if (window.location.hash === '#waitlist') {
         history.replaceState(null, '', window.location.pathname + window.location.search);
       }
@@ -164,7 +171,7 @@
         <form
           class="waitlist-form"
           aria-label="Waitlist form"
-          data-function-name="waitlist-signup"
+          data-function-name="join-waitlist"
         >
           <label class="sr-only" for="email">Email</label>
           <input id="email" name="email" type="email" placeholder="Email" required />
@@ -196,8 +203,8 @@
     const configuredFunctionName = waitlistForm?.dataset.functionName?.trim() || '';
     const supabaseConfig = window.MODARIO_SUPABASE || {};
     const functionName = configuredFunctionName || supabaseConfig.functionName || '';
-    const supabaseUrl = supabaseConfig.url || window.SUPABASE_URL || '';
-    const supabaseAnonKey = supabaseConfig.anonKey || window.SUPABASE_ANON_KEY || '';
+    const supabaseUrl = supabaseConfig.url || '';
+    const supabaseAnonKey = supabaseConfig.anonKey || '';
 
     const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
