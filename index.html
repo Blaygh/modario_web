@@ -29,30 +29,42 @@
           <a class="btn primary" href="#waitlist">Join the Waitlist</a>
         </div>
 
-        <figure class="hero-visual card-lift">
-          <img
-            src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=1600&q=80"
-            alt="Full business casual male outfit flat-lay on a white background with blazer, shirt, chinos, belt, shoes, and watch"
-          />
-          <figcaption>
-            <span>Suggested Today</span>
-            <span>Work Outfit</span>
-            <span>Planned for Friday</span>
-          </figcaption>
-        </figure>
       </section>
 
-      <section class="story reveal" aria-labelledby="mornings-title">
+      <section class="story reveal mornings-layout" aria-labelledby="mornings-title">
         <div class="story-copy">
           <p class="eyebrow">Modario is for Mornings</p>
           <h2 id="mornings-title">No more closet indecision.</h2>
           <p>Open Modario. Get your look.</p>
         </div>
-        <div class="story-visual card-lift">
-          <img
-            src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=1200&q=80"
-            alt="Phone mockup style visual showing today's outfit suggestion"
-          />
+        <div class="story-visual mornings-gallery card-lift" aria-label="Outfit previews">
+          <div class="mornings-gallery-track" id="mornings-gallery-track">
+            <figure class="mornings-gallery-item">
+              <img
+                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/date.png"
+                alt="Planned for today outfit preview"
+              />
+              <figcaption>Planned for Today</figcaption>
+            </figure>
+            <figure class="mornings-gallery-item">
+              <img
+                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/official.png"
+                alt="Next date outfit preview"
+              />
+              <figcaption>Next Date</figcaption>
+            </figure>
+            <figure class="mornings-gallery-item">
+              <img
+                src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=1200&q=80"
+                alt="Planned for Friday outfit preview"
+              />
+              <figcaption>Planned for Friday</figcaption>
+            </figure>
+          </div>
+          <div class="mornings-gallery-controls" aria-label="Scroll outfit previews">
+            <button type="button" class="gallery-btn" data-scroll="prev" aria-label="Scroll left">←</button>
+            <button type="button" class="gallery-btn" data-scroll="next" aria-label="Scroll right">→</button>
+          </div>
         </div>
       </section>
 
@@ -164,5 +176,19 @@
         <a href="#">Instagram</a>
       </nav>
     </footer>
-  </body>
+  <script>
+    const morningsTrack = document.getElementById('mornings-gallery-track');
+    const scrollButtons = document.querySelectorAll('.gallery-btn');
+
+    if (morningsTrack) {
+      scrollButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const direction = button.dataset.scroll === 'next' ? 1 : -1;
+          const amount = morningsTrack.clientWidth;
+          morningsTrack.scrollBy({ left: amount * direction, behavior: 'smooth' });
+        });
+      });
+    }
+  </script>
+</body>
 </html>
