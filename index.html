@@ -12,6 +12,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      if (window.location.hash === '#waitlist') {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    </script>
   </head>
   <body>
     <header class="floating-header">
@@ -44,21 +49,18 @@
                 src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/date.png"
                 alt="Planned for today outfit preview"
               />
-              <figcaption>Planned for Today</figcaption>
             </figure>
             <figure class="mornings-gallery-item">
               <img
                 src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/official.png"
                 alt="Next date outfit preview"
               />
-              <figcaption>Next Date</figcaption>
             </figure>
             <figure class="mornings-gallery-item">
               <img
                 src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=1200&q=80"
                 alt="Planned for Friday outfit preview"
               />
-              <figcaption>Planned for Friday</figcaption>
             </figure>
           </div>
           <div class="mornings-gallery-controls" aria-label="Scroll outfit previews">
@@ -116,7 +118,7 @@
         <div class="ui-gradient-card card-lift">
           <img
             class="product-ui-image"
-            src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=1800&q=80"
+            src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/ui.png"
             alt="Three mobile app screens showing Modario outfit suggestions, outfit details, and a virtual wardrobe grid"
           />
         </div>
@@ -131,8 +133,8 @@
             <span>— Alex</span>
           </article>
           <article class="testimonial card-lift">
-            <p>“I wear more of what I already own.”</p>
-            <span>— Nina</span>
+            <p>“Modario is just what I’ve been waiting for.”</p>
+            <span>— John Sam Bruce</span>
           </article>
         </div>
       </section>
