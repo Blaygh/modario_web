@@ -13,6 +13,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script>
+      window.MODARIO_SUPABASE = window.MODARIO_SUPABASE || {
+        url: 'https://bcaajafisvrttvinjfad.supabase.co',
+        anonKey: 'sb_publishable_EzlbWXkh0hMbajPO63X6Vg_wvqTXvLh',
+        functionName: 'join-waitlist',
+      };
+    </script>
+    <script>
       if (window.location.hash === '#waitlist') {
         history.replaceState(null, '', window.location.pathname + window.location.search);
       }
@@ -161,11 +168,16 @@
       <section class="final-cta reveal" id="waitlist" aria-labelledby="waitlist-title">
         <h2 id="waitlist-title">Join the Modario Waitlist</h2>
         <p>Be first to try a smarter way to get dressed.</p>
-        <form class="waitlist-form" aria-label="Waitlist form">
+        <form
+          class="waitlist-form"
+          aria-label="Waitlist form"
+          data-function-name="join-waitlist"
+        >
           <label class="sr-only" for="email">Email</label>
           <input id="email" name="email" type="email" placeholder="Email" required />
           <button type="submit">Join Waitlist</button>
         </form>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </section>
     </main>
 
@@ -178,9 +190,141 @@
         <a href="#">Instagram</a>
       </nav>
     </footer>
-  <script>
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
     const morningsTrack = document.getElementById('mornings-gallery-track');
     const scrollButtons = document.querySelectorAll('.gallery-btn');
+    const waitlistForm = document.querySelector('.waitlist-form');
+    const emailInput = document.getElementById('email');
+    const statusElement = document.getElementById('form-status');
+
+    const pageUrl = new URL(window.location.href);
+    const configuredFunctionName = waitlistForm?.dataset.functionName?.trim() || '';
+    const supabaseConfig = window.MODARIO_SUPABASE || {};
+    const functionName = configuredFunctionName || supabaseConfig.functionName || '';
+    const supabaseUrl = supabaseConfig.url || '';
+    const supabaseAnonKey = supabaseConfig.anonKey || '';
+
+    const supabase = supabaseUrl && supabaseAnonKey
+      ? createClient(supabaseUrl, supabaseAnonKey, {
+          global: {
+            headers: {
+              Authorization: `Bearer ${supabaseAnonKey}`,
+            },
+          },
+        })
+      : null;
+
+    const setFormStatus = (message, state) => {
+      if (!statusElement) return;
+      statusElement.textContent = message;
+      statusElement.dataset.state = state;
+    };
+
+    const toDebugString = (value) => {
+      if (value === null || value === undefined) return '';
+      if (typeof value === 'string') return value;
+      try {
+        return JSON.stringify(value);
+      } catch (_error) {
+        return String(value);
+      }
+    };
+
+    const buildErrorDetails = (error) => {
+      const details = [
+        error?.name ? `name=${error.name}` : null,
+        error?.message ? `message=${error.message}` : null,
+        error?.code ? `code=${error.code}` : null,
+        error?.status ? `status=${error.status}` : null,
+        error?.details ? `details=${toDebugString(error.details)}` : null,
+        error?.hint ? `hint=${error.hint}` : null,
+        error?.context ? `context=${toDebugString(error.context)}` : null,
+      ].filter(Boolean);
+
+      return details.length ? details.join(' | ') : 'Unknown error';
+    };
+
+    const getMetadata = () => {
+      const utmParams = {
+        utm_source: pageUrl.searchParams.get('utm_source') || null,
+        utm_medium: pageUrl.searchParams.get('utm_medium') || null,
+        utm_campaign: pageUrl.searchParams.get('utm_campaign') || null,
+        utm_content: pageUrl.searchParams.get('utm_content') || null,
+        utm_term: pageUrl.searchParams.get('utm_term') || null,
+      };
+
+      return {
+        submitted_at: new Date().toISOString(),
+        source_page: pageUrl.pathname,
+        full_url: pageUrl.toString(),
+        referrer: document.referrer || null,
+        user_agent: navigator.userAgent,
+        language: navigator.language || null,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || null,
+        ...utmParams,
+      };
+    };
+
+    if (waitlistForm) {
+      waitlistForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const submitButton = waitlistForm.querySelector('button[type="submit"]');
+        const email = emailInput?.value.trim() || '';
+        const singleEmailRegex = /^[^\s@,]+@[^\s@,]+\.[^\s@,]+$/;
+
+        if (!singleEmailRegex.test(email)) {
+          setFormStatus('Please enter one valid email address.', 'error');
+          return;
+        }
+
+        if (!supabase) {
+          setFormStatus('Configuration error: Supabase URL/key is missing. Please try again later.', 'error');
+          return;
+        }
+
+        if (!functionName) {
+          setFormStatus('Configuration error: edge function name is missing.', 'error');
+          return;
+        }
+
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Submitting...';
+        }
+
+        setFormStatus('Submitting your request...', 'pending');
+
+        const payload = {
+          email,
+          metadata: getMetadata(),
+        };
+
+        try {
+          const { data, error } = await supabase.functions.invoke(functionName, {
+            body: payload,
+          });
+
+          if (error) {
+            throw error;
+          }
+
+          const successDetails = toDebugString(data) || 'No response body';
+          waitlistForm.reset();
+          setFormStatus(`Success response: ${successDetails}`, 'success');
+        } catch (error) {
+          const errorDetails = buildErrorDetails(error);
+          setFormStatus(`Error response: ${errorDetails}`, 'error');
+          console.error('Waitlist submission failed:', error);
+        } finally {
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Join Waitlist';
+          }
+        }
+      });
+    }
 
     if (morningsTrack) {
       scrollButtons.forEach((button) => {
