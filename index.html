@@ -28,9 +28,11 @@
   </head>
   <body>
     <header class="floating-header">
-      <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">↑ Top</button>
+      <span class="header-brand" aria-label="Modario">Modario</span>
       <a class="header-cta" href="#waitlist">Join Waitlist</a>
     </header>
+
+    <button type="button" class="back-to-top-fab" id="back-to-top" aria-label="Back to top">↑</button>
 
     <main>
       <section class="hero reveal" id="hero" aria-labelledby="hero-title">
@@ -244,6 +246,7 @@
     const modalTriggers = document.querySelectorAll('[data-modal-open]');
     const modals = document.querySelectorAll('.site-modal');
     const floatingHeader = document.querySelector('.floating-header');
+    const backToTopButton = document.getElementById('back-to-top');
 
     const pageUrl = new URL(window.location.href);
     const configuredFunctionName = waitlistForm?.dataset.functionName?.trim() || '';
@@ -385,7 +388,9 @@
 
     if (backToTopButton && floatingHeader) {
       const updateBackToTopVisibility = () => {
-        floatingHeader.classList.toggle('is-scrolled', window.scrollY > 120);
+        const isScrolled = window.scrollY > 120;
+        floatingHeader.classList.toggle('is-scrolled', isScrolled);
+        document.body.classList.toggle('is-scrolled', isScrolled);
       };
 
       window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
