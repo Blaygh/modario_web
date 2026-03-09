@@ -28,6 +28,7 @@
   </head>
   <body>
     <header class="floating-header">
+      <button type="button" class="top-btn" id="back-to-top" aria-label="Back to top">↑ Top</button>
       <a class="header-cta" href="#waitlist">Join Waitlist</a>
     </header>
 
@@ -66,7 +67,7 @@
             </figure>
             <figure class="mornings-gallery-item">
               <img
-                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/official.png"
+                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/female-office.png"
                 alt="Office outfit preview"
               />
             </figure>
@@ -108,8 +109,8 @@
             </figure>
             <figure class="mornings-gallery-item">
               <img
-                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/date-female.png"
-                alt="Planning date outfit preview"
+                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/gym.png"
+                alt="Planning gym outfit preview"
               />
             </figure>
             <figure class="mornings-gallery-item">
@@ -238,6 +239,7 @@
     import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
     const loopGalleryTracks = document.querySelectorAll('.js-loop-track');
+    const backToTopButton = document.getElementById('back-to-top');
     const waitlistForm = document.querySelector('.waitlist-form');
     const emailInput = document.getElementById('email');
     const statusElement = document.getElementById('form-status');
@@ -307,64 +309,16 @@
     };
 
 
-    const openModal = (modalName) => {
-      if (!modalLayer) return;
-      const targetModal = document.getElementById(`${modalName}-modal`);
-      if (!targetModal) return;
+    if (backToTopButton) {
+      const toggleBackToTop = () => {
+        backToTopButton.classList.toggle('is-visible', window.scrollY > 180);
+      };
 
-      modalLayer.hidden = false;
-      document.body.classList.add('modal-open');
-      modals.forEach((modal) => {
-        modal.hidden = modal !== targetModal;
+      toggleBackToTop();
+      window.addEventListener('scroll', toggleBackToTop, { passive: true });
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
-
-      window.requestAnimationFrame(() => {
-        const closeButton = targetModal.querySelector('[data-modal-close]');
-        closeButton?.focus();
-      });
-    };
-
-    const closeModal = () => {
-      if (!modalLayer) return;
-      modalLayer.hidden = true;
-      modals.forEach((modal) => {
-        modal.hidden = true;
-      });
-      document.body.classList.remove('modal-open');
-      if (window.location.hash === '#about' || window.location.hash === '#privacy') {
-        history.replaceState(null, '', window.location.pathname + window.location.search);
-      }
-    };
-
-    modalTriggers.forEach((trigger) => {
-      trigger.addEventListener('click', (event) => {
-        event.preventDefault();
-        const modalName = trigger.dataset.modalOpen;
-        openModal(modalName);
-      });
-    });
-
-    if (modalLayer) {
-      modalLayer.addEventListener('click', (event) => {
-        if (event.target === modalLayer) {
-          closeModal();
-        }
-      });
-
-      modalLayer.querySelectorAll('[data-modal-close]').forEach((closeButton) => {
-        closeButton.addEventListener('click', closeModal);
-      });
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && !modalLayer.hidden) {
-          closeModal();
-        }
-      });
-
-      const hashModal = window.location.hash === '#about' ? 'about' : window.location.hash === '#privacy' ? 'privacy' : '';
-      if (hashModal) {
-        openModal(hashModal);
-      }
     }
 
     if (waitlistForm) {
@@ -503,7 +457,7 @@
 
       window.setInterval(() => {
         advanceNext('smooth');
-      }, 3500);
+      }, 3100);
     });
   </script>
 </body>
