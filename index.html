@@ -47,10 +47,10 @@
         <div class="story-copy">
           <p class="eyebrow">Modario is for Mornings</p>
           <h2 id="mornings-title">No more closet indecision.</h2>
-          <p>Open Modario. Get your look.</p>
+          <p>Join Modario.</p>
         </div>
-        <div class="story-visual mornings-gallery card-lift" aria-label="Outfit previews">
-          <div class="mornings-gallery-track" id="mornings-gallery-track">
+        <div class="story-visual mornings-gallery card-lift js-loop-gallery" aria-label="Outfit previews">
+          <div class="mornings-gallery-track js-loop-track" id="mornings-gallery-track">
             <figure class="mornings-gallery-item">
               <img
                 src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/date.png"
@@ -65,8 +65,8 @@
             </figure>
             <figure class="mornings-gallery-item">
               <img
-                src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=1200&q=80"
-                alt="Planned for Friday outfit preview"
+                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/female-office.png"
+                alt="Office outfit preview"
               />
             </figure>
           </div>
@@ -97,11 +97,31 @@
           <h2 id="planning-title">Plan the week ahead.</h2>
           <p>Work. Events. Travel.</p>
         </div>
-        <div class="story-visual card-lift">
-          <img
-            src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80"
-            alt="Calendar planning style visual with prepared outfits"
-          />
+        <div class="story-visual mornings-gallery card-lift js-loop-gallery" aria-label="Planning outfit previews">
+          <div class="mornings-gallery-track js-loop-track" id="planning-gallery-track">
+            <figure class="mornings-gallery-item">
+              <img
+                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/female-office.png"
+                alt="Planning office outfit preview"
+              />
+            </figure>
+            <figure class="mornings-gallery-item">
+              <img
+                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/date-female.png"
+                alt="Planning date outfit preview"
+              />
+            </figure>
+            <figure class="mornings-gallery-item">
+              <img
+                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/trip.png"
+                alt="Planning trip outfit preview"
+              />
+            </figure>
+          </div>
+          <div class="mornings-gallery-controls" aria-label="Scroll planning previews">
+            <button type="button" class="gallery-btn" data-scroll="prev" aria-label="Scroll left">←</button>
+            <button type="button" class="gallery-btn" data-scroll="next" aria-label="Scroll right">→</button>
+          </div>
         </div>
       </section>
 
@@ -136,31 +156,12 @@
         <h2 id="social-title">People are tired of decision fatigue.</h2>
         <div class="testimonial-grid">
           <article class="testimonial card-lift">
-            <p>“Modario saves me 10 minutes every morning.”</p>
-            <span>— Alex</span>
+            <p>“This will really save me from alot of stress looks like fun too!”</p>
+            <span>— Kayla</span>
           </article>
           <article class="testimonial card-lift">
             <p>“Modario is just what I’ve been waiting for.”</p>
             <span>— John Sam Bruce</span>
-          </article>
-        </div>
-      </section>
-
-      <section class="feature-strip reveal" aria-labelledby="features-title">
-        <p class="eyebrow">Features</p>
-        <h2 id="features-title">Simple tools for getting dressed.</h2>
-        <div class="feature-grid">
-          <article class="feature card-lift">
-            <h3>Smart Suggestions</h3>
-            <p>Looks based on your style.</p>
-          </article>
-          <article class="feature card-lift">
-            <h3>Digital Wardrobe</h3>
-            <p>Organize everything visually.</p>
-          </article>
-          <article class="feature card-lift">
-            <h3>Outfit Planning</h3>
-            <p>Plan ahead in minutes.</p>
           </article>
         </div>
       </section>
@@ -193,8 +194,7 @@
   <script type="module">
     import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-    const morningsTrack = document.getElementById('mornings-gallery-track');
-    const scrollButtons = document.querySelectorAll('.gallery-btn');
+    const loopGalleryTracks = document.querySelectorAll('.js-loop-track');
     const waitlistForm = document.querySelector('.waitlist-form');
     const emailInput = document.getElementById('email');
     const statusElement = document.getElementById('form-status');
@@ -326,15 +326,50 @@
       });
     }
 
-    if (morningsTrack) {
+    loopGalleryTracks.forEach((track) => {
+      const gallery = track.closest('.js-loop-gallery');
+      if (!gallery) return;
+
+      const scrollButtons = gallery.querySelectorAll('.gallery-btn');
+      const originalSlides = Array.from(track.children);
+      const cloneCount = originalSlides.length;
+
+      originalSlides.forEach((slide) => {
+        const clone = slide.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      });
+
+      const getSlideWidth = () => {
+        const gapValue = Number.parseFloat(window.getComputedStyle(track).columnGap) || 0;
+        return track.clientWidth + gapValue;
+      };
+
+      track.addEventListener('scroll', () => {
+        const slideWidth = getSlideWidth();
+        const loopPoint = slideWidth * cloneCount;
+        if (track.scrollLeft >= loopPoint) {
+          track.scrollLeft -= loopPoint;
+        }
+      });
+
       scrollButtons.forEach((button) => {
         button.addEventListener('click', () => {
           const direction = button.dataset.scroll === 'next' ? 1 : -1;
-          const amount = morningsTrack.clientWidth;
-          morningsTrack.scrollBy({ left: amount * direction, behavior: 'smooth' });
+          const amount = getSlideWidth();
+
+          if (direction < 0 && track.scrollLeft <= 0) {
+            track.scrollLeft = getSlideWidth() * cloneCount;
+          }
+
+          track.scrollBy({ left: amount * direction, behavior: 'smooth' });
         });
       });
-    }
+
+      window.setInterval(() => {
+        track.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
+      }, 3500);
+    });
   </script>
 </body>
 </html>
