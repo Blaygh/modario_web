@@ -28,6 +28,7 @@
   </head>
   <body>
     <header class="floating-header">
+      <button type="button" class="top-btn" id="back-to-top" aria-label="Back to top">↑ Top</button>
       <a class="header-cta" href="#waitlist">Join Waitlist</a>
     </header>
 
@@ -43,7 +44,6 @@
         </div>
 
       </section>
-
       <section class="story reveal mornings-layout" aria-labelledby="mornings-title">
         <div class="story-copy">
           <p class="eyebrow">Modario is for Mornings</p>
@@ -238,6 +238,7 @@
     import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
     const loopGalleryTracks = document.querySelectorAll('.js-loop-track');
+    const backToTopButton = document.getElementById('back-to-top');
     const waitlistForm = document.querySelector('.waitlist-form');
     const emailInput = document.getElementById('email');
     const statusElement = document.getElementById('form-status');
@@ -503,7 +504,7 @@
 
       window.setInterval(() => {
         advanceNext('smooth');
-      }, 3500);
+      }, 3100);
     });
   </script>
 </body>
