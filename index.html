@@ -308,16 +308,64 @@
     };
 
 
-    if (backToTopButton) {
-      const toggleBackToTop = () => {
-        backToTopButton.classList.toggle('is-visible', window.scrollY > 180);
-      };
+    const openModal = (modalName) => {
+      if (!modalLayer) return;
+      const targetModal = document.getElementById(`${modalName}-modal`);
+      if (!targetModal) return;
 
-      toggleBackToTop();
-      window.addEventListener('scroll', toggleBackToTop, { passive: true });
-      backToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      modalLayer.hidden = false;
+      document.body.classList.add('modal-open');
+      modals.forEach((modal) => {
+        modal.hidden = modal !== targetModal;
       });
+
+      window.requestAnimationFrame(() => {
+        const closeButton = targetModal.querySelector('[data-modal-close]');
+        closeButton?.focus();
+      });
+    };
+
+    const closeModal = () => {
+      if (!modalLayer) return;
+      modalLayer.hidden = true;
+      modals.forEach((modal) => {
+        modal.hidden = true;
+      });
+      document.body.classList.remove('modal-open');
+      if (window.location.hash === '#about' || window.location.hash === '#privacy') {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    };
+
+    modalTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        const modalName = trigger.dataset.modalOpen;
+        openModal(modalName);
+      });
+    });
+
+    if (modalLayer) {
+      modalLayer.addEventListener('click', (event) => {
+        if (event.target === modalLayer) {
+          closeModal();
+        }
+      });
+
+      modalLayer.querySelectorAll('[data-modal-close]').forEach((closeButton) => {
+        closeButton.addEventListener('click', closeModal);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !modalLayer.hidden) {
+          closeModal();
+        }
+      });
+
+      const hashModal = window.location.hash === '#about' ? 'about' : window.location.hash === '#privacy' ? 'privacy' : '';
+      if (hashModal) {
+        openModal(hashModal);
+      }
     }
 
     if (waitlistForm) {
