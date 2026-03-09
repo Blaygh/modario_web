@@ -235,8 +235,6 @@
       </section>
     </div>
   <script type="module">
-    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-
     const loopGalleryTracks = document.querySelectorAll('.js-loop-track');
     const backToTopButton = document.getElementById('back-to-top');
     const waitlistForm = document.querySelector('.waitlist-form');
@@ -255,8 +253,24 @@
     const supabaseUrl = supabaseConfig.url || '';
     const supabaseAnonKey = supabaseConfig.anonKey || '';
 
-    const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
+    let supabase = null;
+    let supabaseClientPromise = null;
     const debugResponses = Boolean(supabaseConfig.debugResponses);
+
+    const getSupabaseClient = async () => {
+      if (!supabaseUrl || !supabaseAnonKey) return null;
+      if (supabase) return supabase;
+      if (!supabaseClientPromise) {
+        supabaseClientPromise = import('https://esm.sh/@supabase/supabase-js@2')
+          .then(({ createClient }) => createClient(supabaseUrl, supabaseAnonKey))
+          .catch((error) => {
+            console.error('Failed to load Supabase client:', error);
+            return null;
+          });
+      }
+      supabase = await supabaseClientPromise;
+      return supabase;
+    };
 
     const setFormStatus = (message, state) => {
       if (!statusElement) return;
@@ -395,8 +409,9 @@
           return;
         }
 
-        if (!supabase) {
-          setFormStatus('Configuration error: Supabase URL/key is missing. Please try again later.', 'error');
+        const supabaseClient = await getSupabaseClient();
+        if (!supabaseClient) {
+          setFormStatus('Configuration error: Supabase client is unavailable. Please try again later.', 'error');
           return;
         }
 
@@ -418,7 +433,7 @@
         };
 
         try {
-          const { data, error } = await supabase.functions.invoke(functionName, {
+          const { data, error } = await supabaseClient.functions.invoke(functionName, {
             body: payload,
           });
 
