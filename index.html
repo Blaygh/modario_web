@@ -108,8 +108,8 @@
             </figure>
             <figure class="mornings-gallery-item">
               <img
-                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/date-female.png"
-                alt="Planning date outfit preview"
+                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/gym.png"
+                alt="Planning gym outfit preview"
               />
             </figure>
             <figure class="mornings-gallery-item">
@@ -345,29 +345,58 @@
         return track.clientWidth + gapValue;
       };
 
+      const goToIndex = (index, behavior = 'smooth') => {
+        track.scrollTo({ left: getSlideWidth() * index, behavior });
+      };
+
+      const getCurrentIndex = () => {
+        const slideWidth = getSlideWidth();
+        if (!slideWidth) return 0;
+        return Math.round(track.scrollLeft / slideWidth) % cloneCount;
+      };
+
+      const advanceNext = (behavior = 'smooth') => {
+        const currentIndex = getCurrentIndex();
+        if (currentIndex >= cloneCount - 1) {
+          goToIndex(0, 'auto');
+          return;
+        }
+
+        goToIndex(currentIndex + 1, behavior);
+      };
+
+      const advancePrev = (behavior = 'smooth') => {
+        const currentIndex = getCurrentIndex();
+        if (currentIndex <= 0) {
+          goToIndex(cloneCount - 1, 'auto');
+          return;
+        }
+
+        goToIndex(currentIndex - 1, behavior);
+      };
+
       track.addEventListener('scroll', () => {
         const slideWidth = getSlideWidth();
         const loopPoint = slideWidth * cloneCount;
         if (track.scrollLeft >= loopPoint) {
-          track.scrollLeft -= loopPoint;
+          goToIndex(0, 'auto');
         }
       });
 
       scrollButtons.forEach((button) => {
         button.addEventListener('click', () => {
           const direction = button.dataset.scroll === 'next' ? 1 : -1;
-          const amount = getSlideWidth();
-
-          if (direction < 0 && track.scrollLeft <= 0) {
-            track.scrollLeft = getSlideWidth() * cloneCount;
+          if (direction > 0) {
+            advanceNext('smooth');
+            return;
           }
 
-          track.scrollBy({ left: amount * direction, behavior: 'smooth' });
+          advancePrev('smooth');
         });
       });
 
       window.setInterval(() => {
-        track.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
+        advanceNext('smooth');
       }, 3500);
     });
   </script>
