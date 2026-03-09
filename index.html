@@ -28,7 +28,7 @@
   </head>
   <body>
     <header class="floating-header">
-      <button type="button" class="top-btn" id="back-to-top" aria-label="Back to top">↑ Top</button>
+      <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">↑ Top</button>
       <a class="header-cta" href="#waitlist">Join Waitlist</a>
     </header>
 
@@ -245,6 +245,8 @@
     const modalLayer = document.getElementById('modal-layer');
     const modalTriggers = document.querySelectorAll('[data-modal-open]');
     const modals = document.querySelectorAll('.site-modal');
+    const floatingHeader = document.querySelector('.floating-header');
+    const backToTopButton = document.getElementById('back-to-top');
 
     const pageUrl = new URL(window.location.href);
     const configuredFunctionName = waitlistForm?.dataset.functionName?.trim() || '';
@@ -366,6 +368,19 @@
       if (hashModal) {
         openModal(hashModal);
       }
+    }
+
+    if (backToTopButton && floatingHeader) {
+      const updateBackToTopVisibility = () => {
+        floatingHeader.classList.toggle('is-scrolled', window.scrollY > 120);
+      };
+
+      window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+      updateBackToTopVisibility();
+
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     }
 
     if (waitlistForm) {
