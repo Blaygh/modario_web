@@ -28,8 +28,11 @@
   </head>
   <body>
     <header class="floating-header">
+      <span class="header-brand" aria-label="Modario">Modario</span>
       <a class="header-cta" href="#waitlist">Join Waitlist</a>
     </header>
+
+    <button type="button" class="back-to-top-fab" id="back-to-top" aria-label="Back to top">↑</button>
 
     <main>
       <section class="hero reveal" id="hero" aria-labelledby="hero-title">
@@ -181,24 +184,69 @@
         </form>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </section>
+
     </main>
 
     <footer>
       <span>Modario</span>
       <nav aria-label="Footer">
-        <a href="#">About</a>
-        <a href="#">Privacy</a>
-        <a href="#">Contact</a>
-        <a href="#">Instagram</a>
+        <a href="#about" data-modal-open="about">About</a>
+        <a href="#privacy" data-modal-open="privacy">Privacy</a>
+        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#101;&#107;&#117;&#64;&#109;&#111;&#100;&#97;&#114;&#105;&#111;&#46;&#105;&#111;">Contact</a>
+        <a href="https://www.instagram.com/modario.io/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </nav>
     </footer>
-  <script type="module">
-    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
+    <div class="modal-layer" id="modal-layer" hidden>
+      <section class="site-modal" id="about-modal" role="dialog" aria-modal="true" aria-labelledby="about-modal-title" hidden>
+        <button type="button" class="modal-close" aria-label="Close about modal" data-modal-close>×</button>
+        <p class="eyebrow">About</p>
+        <h2 id="about-modal-title">About Modario</h2>
+        <p>Modario is building a smarter way to decide what to wear.</p>
+        <p>Most people have full closets but still struggle to put outfits together every day. Modario turns your wardrobe into a digital system that helps you discover outfits, plan what to wear, and make faster decisions with the clothes you already own.</p>
+        <p>We’re starting with one simple goal: remove the daily friction of getting dressed.</p>
+        <p>Join the waitlist to get early access when Modario launches.</p>
+      </section>
+
+      <section class="site-modal" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title" hidden>
+        <button type="button" class="modal-close" aria-label="Close privacy modal" data-modal-close>×</button>
+        <p class="eyebrow">Privacy</p>
+        <h2 id="privacy-modal-title">Privacy Policy</h2>
+        <p><strong>Last Updated:</strong> March 9, 2026</p>
+        <h3>1. Information We Collect</h3>
+        <p>When you join the Modario waitlist, we collect your email address, which you provide voluntarily on our website.</p>
+        <p>At this stage, we do not collect additional personal data, such as payment information, addresses, or sensitive personal information.</p>
+        <h3>2. How We Use Your Information</h3>
+        <p>Your email address is used solely to notify you when Modario launches, provide product updates, send early access invitations, and communicate important launch announcements.</p>
+        <p>We do not use your email for unrelated marketing, and we do not sell or rent your personal information.</p>
+        <h3>3. No Sale of Personal Information</h3>
+        <p>Your email address will never be sold, rented, or traded to third parties. We do not share your personal information with advertisers, data brokers, or marketing companies.</p>
+        <h3>4. Data Storage and Security</h3>
+        <p>We take reasonable measures to protect your information from unauthorized access, misuse, or disclosure.</p>
+        <p>Your email may be stored using secure infrastructure or trusted service providers that help manage waitlist registrations and notifications.</p>
+        <h3>5. Third-Party Services</h3>
+        <p>We may use trusted third-party services such as email notification platforms, hosting providers, and analytics services.</p>
+        <p>These providers may process your email only to help us operate the waitlist and are not permitted to use it for their own purposes.</p>
+        <h3>6. Your Rights and Choices</h3>
+        <p>You may request removal from the waitlist at any time by contacting <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#101;&#107;&#117;&#64;&#109;&#111;&#100;&#97;&#114;&#105;&#111;&#46;&#105;&#111;">&#110;&#101;&#107;&#117;&#64;&#109;&#111;&#100;&#97;&#114;&#105;&#111;&#46;&#105;&#111;</a>.</p>
+        <h3>7. Children's Privacy</h3>
+        <p>The Modario waitlist is not directed toward individuals under the age of 13. If we become aware data was collected from a child without proper consent, we will delete it.</p>
+        <h3>8. Changes to This Privacy Policy</h3>
+        <p>We may update this Privacy Policy from time to time. The updated version will be posted with a revised Last Updated date.</p>
+        <h3>9. Contact Us</h3>
+        <p>If you have any questions about this Privacy Policy or how your information is handled, contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#101;&#107;&#117;&#64;&#109;&#111;&#100;&#97;&#114;&#105;&#111;&#46;&#105;&#111;">&#110;&#101;&#107;&#117;&#64;&#109;&#111;&#100;&#97;&#114;&#105;&#111;&#46;&#105;&#111;</a>.</p>
+      </section>
+    </div>
+  <script type="module">
     const loopGalleryTracks = document.querySelectorAll('.js-loop-track');
     const waitlistForm = document.querySelector('.waitlist-form');
     const emailInput = document.getElementById('email');
     const statusElement = document.getElementById('form-status');
+    const modalLayer = document.getElementById('modal-layer');
+    const modalTriggers = document.querySelectorAll('[data-modal-open]');
+    const modals = document.querySelectorAll('.site-modal');
+    const floatingHeader = document.querySelector('.floating-header');
+    const backToTopButton = document.getElementById('back-to-top');
 
     const pageUrl = new URL(window.location.href);
     const configuredFunctionName = waitlistForm?.dataset.functionName?.trim() || '';
@@ -207,8 +255,24 @@
     const supabaseUrl = supabaseConfig.url || '';
     const supabaseAnonKey = supabaseConfig.anonKey || '';
 
-    const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
+    let supabase = null;
+    let supabaseClientPromise = null;
     const debugResponses = Boolean(supabaseConfig.debugResponses);
+
+    const getSupabaseClient = async () => {
+      if (!supabaseUrl || !supabaseAnonKey) return null;
+      if (supabase) return supabase;
+      if (!supabaseClientPromise) {
+        supabaseClientPromise = import('https://esm.sh/@supabase/supabase-js@2')
+          .then(({ createClient }) => createClient(supabaseUrl, supabaseAnonKey))
+          .catch((error) => {
+            console.error('Failed to load Supabase client:', error);
+            return null;
+          });
+      }
+      supabase = await supabaseClientPromise;
+      return supabase;
+    };
 
     const setFormStatus = (message, state) => {
       if (!statusElement) return;
@@ -261,6 +325,82 @@
       };
     };
 
+
+    const openModal = (modalName) => {
+      if (!modalLayer) return;
+      const targetModal = document.getElementById(`${modalName}-modal`);
+      if (!targetModal) return;
+
+      modalLayer.hidden = false;
+      document.body.classList.add('modal-open');
+      modals.forEach((modal) => {
+        modal.hidden = modal !== targetModal;
+      });
+
+      window.requestAnimationFrame(() => {
+        const closeButton = targetModal.querySelector('[data-modal-close]');
+        closeButton?.focus();
+      });
+    };
+
+    const closeModal = () => {
+      if (!modalLayer) return;
+      modalLayer.hidden = true;
+      modals.forEach((modal) => {
+        modal.hidden = true;
+      });
+      document.body.classList.remove('modal-open');
+      if (window.location.hash === '#about' || window.location.hash === '#privacy') {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    };
+
+    modalTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        const modalName = trigger.dataset.modalOpen;
+        openModal(modalName);
+      });
+    });
+
+    if (modalLayer) {
+      modalLayer.addEventListener('click', (event) => {
+        if (event.target === modalLayer) {
+          closeModal();
+        }
+      });
+
+      modalLayer.querySelectorAll('[data-modal-close]').forEach((closeButton) => {
+        closeButton.addEventListener('click', closeModal);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !modalLayer.hidden) {
+          closeModal();
+        }
+      });
+
+      const hashModal = window.location.hash === '#about' ? 'about' : window.location.hash === '#privacy' ? 'privacy' : '';
+      if (hashModal) {
+        openModal(hashModal);
+      }
+    }
+
+    if (backToTopButton && floatingHeader) {
+      const updateBackToTopVisibility = () => {
+        const isScrolled = window.scrollY > 120;
+        floatingHeader.classList.toggle('is-scrolled', isScrolled);
+        document.body.classList.toggle('is-scrolled', isScrolled);
+      };
+
+      window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+      updateBackToTopVisibility();
+
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
     if (waitlistForm) {
       waitlistForm.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -273,8 +413,9 @@
           return;
         }
 
-        if (!supabase) {
-          setFormStatus('Configuration error: Supabase URL/key is missing. Please try again later.', 'error');
+        const supabaseClient = await getSupabaseClient();
+        if (!supabaseClient) {
+          setFormStatus('Configuration error: Supabase client is unavailable. Please try again later.', 'error');
           return;
         }
 
@@ -296,7 +437,7 @@
         };
 
         try {
-          const { data, error } = await supabase.functions.invoke(functionName, {
+          const { data, error } = await supabaseClient.functions.invoke(functionName, {
             body: payload,
           });
 
@@ -397,7 +538,7 @@
 
       window.setInterval(() => {
         advanceNext('smooth');
-      }, 3500);
+      }, 3100);
     });
   </script>
 </body>
