@@ -46,7 +46,6 @@
         </div>
 
       </section>
-
       <section class="story reveal mornings-layout" aria-labelledby="mornings-title">
         <div class="story-copy">
           <p class="eyebrow">Modario is for Mornings</p>
@@ -98,7 +97,7 @@
       <section class="story reveal" aria-labelledby="planning-title">
         <div class="story-copy">
           <p class="eyebrow">Modario is for Planning</p>
-          <h2 id="planning-title">Plan the week ahead.</h2>
+          <h2 id="planning-title">Plan your week</h2>
           <p>Work. Events. Travel.</p>
         </div>
         <div class="story-visual mornings-gallery card-lift js-loop-gallery" aria-label="Planning outfit previews">
@@ -132,7 +131,7 @@
       <section class="story reveal reverse" aria-labelledby="confidence-title">
         <div class="story-copy">
           <p class="eyebrow">Modario is for Confidence</p>
-          <h2 id="confidence-title">Dress like yourself.</h2>
+          <h2 id="confidence-title">Own your style.</h2>
           <p>Less guessing. More confidence.</p>
         </div>
         <div class="story-visual card-lift">
@@ -145,7 +144,7 @@
 
       <section class="product-ui reveal" id="product-ui" aria-labelledby="product-ui-title">
         <p class="eyebrow">Product UI</p>
-        <h2 id="product-ui-title">A calm interface for outfit decisions.</h2>
+        <h2 id="product-ui-title">An interface made for you.</h2>
         <div class="ui-gradient-card card-lift">
           <img
             class="product-ui-image"
@@ -239,6 +238,7 @@
     </div>
   <script type="module">
     const loopGalleryTracks = document.querySelectorAll('.js-loop-track');
+    const backToTopButton = document.getElementById('back-to-top');
     const waitlistForm = document.querySelector('.waitlist-form');
     const emailInput = document.getElementById('email');
     const statusElement = document.getElementById('form-status');
@@ -246,7 +246,7 @@
     const modalTriggers = document.querySelectorAll('[data-modal-open]');
     const modals = document.querySelectorAll('.site-modal');
     const floatingHeader = document.querySelector('.floating-header');
-    const backToTopButton = document.getElementById('back-to-top');
+
 
     const pageUrl = new URL(window.location.href);
     const configuredFunctionName = waitlistForm?.dataset.functionName?.trim() || '';
