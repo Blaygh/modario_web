@@ -48,7 +48,7 @@
         </div>
       </section>
 
-      <section class="story reveal" id="features" aria-labelledby="weather-title">
+      <section class="story reveal feature-story" id="features" aria-labelledby="wardrobe-title">
         <div class="story-copy">
           <p class="eyebrow">Virtual Wardrobe</p>
           <h2 id="wardrobe-title">Everything you own, beautifully organized.</h2>
@@ -59,7 +59,7 @@
         </div>
       </section>
 
-      <section class="story reveal" aria-labelledby="weather-title">
+      <section class="story reveal reverse feature-story" aria-labelledby="weather-title">
         <div class="story-copy">
           <p class="eyebrow">Weather Integrations</p>
           <h2 id="weather-title">Dress for what the day actually feels like.</h2>
@@ -70,7 +70,7 @@
         </div>
       </section>
 
-      <section class="story reveal reverse" aria-labelledby="avatar-title">
+      <section class="story reveal feature-story" aria-labelledby="avatar-title">
         <div class="story-copy">
           <p class="eyebrow">Avatar Selection</p>
           <h2 id="avatar-title">Preview outfits on your avatar.</h2>
@@ -109,6 +109,7 @@
 
     <script type="module">
       const loopGalleryTracks = document.querySelectorAll('.js-loop-track');
+      const featureStories = document.querySelectorAll('.feature-story');
       const backToTopButton = document.getElementById('back-to-top');
       const floatingHeader = document.querySelector('.floating-header');
 
@@ -157,6 +158,24 @@
           });
         });
       });
+
+      if ('IntersectionObserver' in window) {
+        const featureObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              entry.target.classList.toggle('is-active', entry.isIntersecting);
+            });
+          },
+          {
+            threshold: 0.45,
+            rootMargin: '-8% 0px -8% 0px',
+          }
+        );
+
+        featureStories.forEach((story) => featureObserver.observe(story));
+      } else {
+        featureStories.forEach((story) => story.classList.add('is-active'));
+      }
     </script>
   </body>
 </html>
