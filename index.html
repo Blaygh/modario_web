@@ -3,543 +3,103 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modario — Join the Waitlist</title>
+    <title>Modario — Your Personal Styling Companion</title>
     <meta
       name="description"
-      content="Modario is for getting dressed. Most people struggle to decide what to wear. Plan outfits in seconds."
+      content="Modario helps you get dressed with weather-aware outfit recommendations, a virtual wardrobe, and personalized avatars."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="./runtime-config.js"></script>
-    <script>
-      window.MODARIO_SUPABASE = window.MODARIO_SUPABASE || {
-        url: 'https://bcaajafisvrttvinjfad.supabase.co',
-        anonKey: 'sb_publishable_EzlbWXkh0hMbajPO63X6Vg_wvqTXvLh',
-        functionName: 'join-waitlist',
-      };
-    </script>
-    <script>
-      if (window.location.hash === '#waitlist') {
-        history.replaceState(null, '', window.location.pathname + window.location.search);
-      }
-    </script>
   </head>
-  <body>
-    <header class="floating-header">
-      <span class="header-brand" aria-label="Modario">Modario</span>
-      <a class="header-cta" href="#waitlist">Join Waitlist</a>
+  <body class="site-home">
+    <header class="floating-header home-header">
+      <a class="brand-link" href="#top" aria-label="Modario home">Modario</a>
+      <nav class="top-nav" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a class="header-cta" href="waitlist.html">Join Waitlist</a>
+      </nav>
     </header>
 
-    <button type="button" class="back-to-top-fab" id="back-to-top" aria-label="Back to top">↑</button>
-
-    <main>
-      <section class="hero reveal" id="hero" aria-labelledby="hero-title">
-        <p class="eyebrow">Fashion lifestyle app</p>
-        <h1 id="hero-title" class="hero-title"><span class="type-style">Style</span><span class="with-modario">with Modario</span></h1>
-        <p class="hero-subtext">Most people struggle to decide what to wear.</p>
-        <p class="hero-subtext">Plan outfits in seconds.</p>
-
+    <main id="top">
+      <section class="hero home-hero fade-in-landing" aria-labelledby="home-hero-title">
+        <p class="eyebrow">Fashion, forecast, and confidence</p>
+        <h1 id="home-hero-title">The full Modario experience.</h1>
+        <p class="hero-subtext">Plan outfits with live weather insights, organize a virtual wardrobe, and style yourself on a personalized avatar before you leave home.</p>
         <div class="hero-cta-row">
-          <a class="btn primary" href="#waitlist">Join the Waitlist</a>
+          <a class="btn primary" href="waitlist.html">Join the Waitlist</a>
+          <a class="btn secondary" href="#features">Explore Features</a>
         </div>
-
       </section>
-      <section class="story reveal mornings-layout" aria-labelledby="mornings-title">
+
+      <section class="story reveal" id="features" aria-labelledby="weather-title">
         <div class="story-copy">
-          <p class="eyebrow">Modario is for Mornings</p>
-          <h2 id="mornings-title">No more closet indecision.</h2>
-          <p>Join Modario.</p>
+          <p class="eyebrow">Weather Integration</p>
+          <h2 id="weather-title">Dress for real conditions.</h2>
+          <p>Modario uses weather data to suggest smart layers, fabrics, and footwear for the exact forecast in your area.</p>
         </div>
-        <div class="story-visual mornings-gallery card-lift js-loop-gallery" aria-label="Outfit previews">
-          <div class="mornings-gallery-track js-loop-track" id="mornings-gallery-track">
-            <figure class="mornings-gallery-item">
-              <img
-                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/gym.png"
-                alt="Planned for today outfit preview"
-              />
-            </figure>
-            <figure class="mornings-gallery-item">
-              <img
-                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/date.png"
-                alt="Next date outfit preview"
-              />
-            </figure>
-            <figure class="mornings-gallery-item">
-              <img
-                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/official.png"
-                alt="Office outfit preview"
-              />
-            </figure>
-          </div>
-          <div class="mornings-gallery-controls" aria-label="Scroll outfit previews">
-            <button type="button" class="gallery-btn" data-scroll="prev" aria-label="Scroll left">←</button>
-            <button type="button" class="gallery-btn" data-scroll="next" aria-label="Scroll right">→</button>
-          </div>
+        <div class="story-visual card-lift">
+          <img src="https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&w=1200&q=80" alt="Person checking weather-aware outfit suggestions on a phone" />
         </div>
       </section>
 
       <section class="story reveal reverse" aria-labelledby="wardrobe-title">
         <div class="story-copy">
-          <p class="eyebrow">Modario is for Your Wardrobe</p>
-          <h2 id="wardrobe-title">Your virtual wardrobe.</h2>
-          <p>See everything in one calm view.</p>
+          <p class="eyebrow">Virtual Wardrobe</p>
+          <h2 id="wardrobe-title">Your closet, digitized.</h2>
+          <p>Upload and organize your clothing into categories, build outfits in seconds, and track what you actually wear each week.</p>
         </div>
         <div class="story-visual card-lift">
-          <img
-            src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=80"
-            alt="Wardrobe organization screen concept with neatly arranged clothing"
-          />
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80" alt="Cleanly organized virtual wardrobe preview" />
         </div>
       </section>
 
-      <section class="story reveal" aria-labelledby="planning-title">
+      <section class="story reveal" aria-labelledby="avatar-title">
         <div class="story-copy">
-          <p class="eyebrow">Modario is for Planning</p>
-          <h2 id="planning-title">Plan your week</h2>
-          <p>Work. Events. Travel.</p>
-        </div>
-        <div class="story-visual mornings-gallery card-lift js-loop-gallery" aria-label="Planning outfit previews">
-          <div class="mornings-gallery-track js-loop-track" id="planning-gallery-track">
-            <figure class="mornings-gallery-item">
-              <img
-                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/female-office.png"
-                alt="Planning office outfit preview"
-              />
-            </figure>
-            <figure class="mornings-gallery-item">
-              <img
-                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/date-female.png"
-                alt="Planning date outfit preview"
-              />
-            </figure>
-            <figure class="mornings-gallery-item">
-              <img
-                src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/trip.png"
-                alt="Planning trip outfit preview"
-              />
-            </figure>
-          </div>
-          <div class="mornings-gallery-controls" aria-label="Scroll planning previews">
-            <button type="button" class="gallery-btn" data-scroll="prev" aria-label="Scroll left">←</button>
-            <button type="button" class="gallery-btn" data-scroll="next" aria-label="Scroll right">→</button>
-          </div>
-        </div>
-      </section>
-
-      <section class="story reveal reverse" aria-labelledby="confidence-title">
-        <div class="story-copy">
-          <p class="eyebrow">Modario is for Confidence</p>
-          <h2 id="confidence-title">Own your style.</h2>
-          <p>Less guessing. More confidence.</p>
+          <p class="eyebrow">Avatar Selection</p>
+          <h2 id="avatar-title">Try looks on your avatar.</h2>
+          <p>Customize your avatar to match your style profile and preview combinations before committing to a look.</p>
         </div>
         <div class="story-visual card-lift">
-          <img
-            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80"
-            alt="Styled fashion outfits representing confidence and personal style"
-          />
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Digital avatar styling concept with outfit options" />
         </div>
       </section>
 
-      <section class="product-ui reveal" id="product-ui" aria-labelledby="product-ui-title">
-        <p class="eyebrow">Product UI</p>
-        <h2 id="product-ui-title">An interface made for you.</h2>
-        <div class="ui-gradient-card card-lift">
-          <img
-            class="product-ui-image"
-            src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/ui.png"
-            alt="Three mobile app screens showing Modario outfit suggestions, outfit details, and a virtual wardrobe grid"
-          />
-        </div>
-      </section>
-
-      <section class="social-proof reveal" aria-labelledby="social-title">
-        <p class="eyebrow">Social Proof</p>
-        <h2 id="social-title">People are tired of decision fatigue.</h2>
-        <div class="testimonial-grid">
-          <article class="testimonial card-lift">
-            <p>“This will really save me from alot of stress looks like fun too!”</p>
-            <span>— Kayla</span>
+      <section class="feature-strip reveal" id="how-it-works" aria-labelledby="how-title">
+        <p class="eyebrow">How it works</p>
+        <h2 id="how-title">From closet chaos to daily clarity.</h2>
+        <div class="feature-grid">
+          <article class="feature card-lift">
+            <h3>1. Add your wardrobe</h3>
+            <p>Capture your key clothing items once.</p>
           </article>
-          <article class="testimonial card-lift">
-            <p>“Modario is just what I’ve been waiting for.”</p>
-            <span>— John Sam Bruce</span>
+          <article class="feature card-lift">
+            <h3>2. Sync forecast data</h3>
+            <p>Get context-aware outfit suggestions each day.</p>
+          </article>
+          <article class="feature card-lift">
+            <h3>3. Preview with avatars</h3>
+            <p>Check fit and style before stepping out.</p>
           </article>
         </div>
       </section>
 
-      <section class="final-cta reveal" id="waitlist" aria-labelledby="waitlist-title">
-        <h2 id="waitlist-title">Join the Modario Waitlist</h2>
-        <p>Be first to try a smarter way to get dressed.</p>
-        <form
-          class="waitlist-form"
-          aria-label="Waitlist form"
-          data-function-name="join-waitlist"
-        >
-          <label class="sr-only" for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Email" required />
-          <button type="submit">Join Waitlist</button>
-        </form>
-        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      <section class="final-cta reveal" aria-labelledby="ready-title">
+        <h2 id="ready-title">Ready to style smarter with Modario?</h2>
+        <p>Get early access and be first to try weather-aware outfit planning.</p>
+        <a class="btn primary" href="waitlist.html">Go to Waitlist Page</a>
       </section>
-
     </main>
 
     <footer>
       <span>Modario</span>
       <nav aria-label="Footer">
-        <a href="#about" data-modal-open="about">About</a>
-        <a href="#privacy" data-modal-open="privacy">Privacy</a>
-        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#101;&#107;&#117;&#64;&#109;&#111;&#100;&#97;&#114;&#105;&#111;&#46;&#105;&#111;">Contact</a>
-        <a href="https://www.instagram.com/modario.io/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="waitlist.html">Waitlist</a>
       </nav>
     </footer>
-
-    <div class="modal-layer" id="modal-layer" hidden>
-      <section class="site-modal" id="about-modal" role="dialog" aria-modal="true" aria-labelledby="about-modal-title" hidden>
-        <button type="button" class="modal-close" aria-label="Close about modal" data-modal-close>×</button>
-        <p class="eyebrow">About</p>
-        <h2 id="about-modal-title">About Modario</h2>
-        <p>Modario is building a smarter way to decide what to wear.</p>
-        <p>Most people have full closets but still struggle to put outfits together every day. Modario turns your wardrobe into a digital system that helps you discover outfits, plan what to wear, and make faster decisions with the clothes you already own.</p>
-        <p>We’re starting with one simple goal: remove the daily friction of getting dressed.</p>
-        <p>Join the waitlist to get early access when Modario launches.</p>
-      </section>
-
-      <section class="site-modal" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title" hidden>
-        <button type="button" class="modal-close" aria-label="Close privacy modal" data-modal-close>×</button>
-        <p class="eyebrow">Privacy</p>
-        <h2 id="privacy-modal-title">Privacy Policy</h2>
-        <p><strong>Last Updated:</strong> March 9, 2026</p>
-        <h3>1. Information We Collect</h3>
-        <p>When you join the Modario waitlist, we collect your email address, which you provide voluntarily on our website.</p>
-        <p>At this stage, we do not collect additional personal data, such as payment information, addresses, or sensitive personal information.</p>
-        <h3>2. How We Use Your Information</h3>
-        <p>Your email address is used solely to notify you when Modario launches, provide product updates, send early access invitations, and communicate important launch announcements.</p>
-        <p>We do not use your email for unrelated marketing, and we do not sell or rent your personal information.</p>
-        <h3>3. No Sale of Personal Information</h3>
-        <p>Your email address will never be sold, rented, or traded to third parties. We do not share your personal information with advertisers, data brokers, or marketing companies.</p>
-        <h3>4. Data Storage and Security</h3>
-        <p>We take reasonable measures to protect your information from unauthorized access, misuse, or disclosure.</p>
-        <p>Your email may be stored using secure infrastructure or trusted service providers that help manage waitlist registrations and notifications.</p>
-        <h3>5. Third-Party Services</h3>
-        <p>We may use trusted third-party services such as email notification platforms, hosting providers, and analytics services.</p>
-        <p>These providers may process your email only to help us operate the waitlist and are not permitted to use it for their own purposes.</p>
-        <h3>6. Your Rights and Choices</h3>
-        <p>You may request removal from the waitlist at any time by contacting <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#101;&#107;&#117;&#64;&#109;&#111;&#100;&#97;&#114;&#105;&#111;&#46;&#105;&#111;">&#110;&#101;&#107;&#117;&#64;&#109;&#111;&#100;&#97;&#114;&#105;&#111;&#46;&#105;&#111;</a>.</p>
-        <h3>7. Children's Privacy</h3>
-        <p>The Modario waitlist is not directed toward individuals under the age of 13. If we become aware data was collected from a child without proper consent, we will delete it.</p>
-        <h3>8. Changes to This Privacy Policy</h3>
-        <p>We may update this Privacy Policy from time to time. The updated version will be posted with a revised Last Updated date.</p>
-        <h3>9. Contact Us</h3>
-        <p>If you have any questions about this Privacy Policy or how your information is handled, contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#101;&#107;&#117;&#64;&#109;&#111;&#100;&#97;&#114;&#105;&#111;&#46;&#105;&#111;">&#110;&#101;&#107;&#117;&#64;&#109;&#111;&#100;&#97;&#114;&#105;&#111;&#46;&#105;&#111;</a>.</p>
-      </section>
-    </div>
-  <script type="module">
-    const loopGalleryTracks = document.querySelectorAll('.js-loop-track');
-    const backToTopButton = document.getElementById('back-to-top');
-    const waitlistForm = document.querySelector('.waitlist-form');
-    const emailInput = document.getElementById('email');
-    const statusElement = document.getElementById('form-status');
-    const modalLayer = document.getElementById('modal-layer');
-    const modalTriggers = document.querySelectorAll('[data-modal-open]');
-    const modals = document.querySelectorAll('.site-modal');
-    const floatingHeader = document.querySelector('.floating-header');
-
-
-    const pageUrl = new URL(window.location.href);
-    const configuredFunctionName = waitlistForm?.dataset.functionName?.trim() || '';
-    const supabaseConfig = window.MODARIO_SUPABASE || {};
-    const functionName = configuredFunctionName || supabaseConfig.functionName || '';
-    const supabaseUrl = supabaseConfig.url || '';
-    const supabaseAnonKey = supabaseConfig.anonKey || '';
-
-    let supabase = null;
-    let supabaseClientPromise = null;
-    const debugResponses = Boolean(supabaseConfig.debugResponses);
-
-    const getSupabaseClient = async () => {
-      if (!supabaseUrl || !supabaseAnonKey) return null;
-      if (supabase) return supabase;
-      if (!supabaseClientPromise) {
-        supabaseClientPromise = import('https://esm.sh/@supabase/supabase-js@2')
-          .then(({ createClient }) => createClient(supabaseUrl, supabaseAnonKey))
-          .catch((error) => {
-            console.error('Failed to load Supabase client:', error);
-            return null;
-          });
-      }
-      supabase = await supabaseClientPromise;
-      return supabase;
-    };
-
-    const setFormStatus = (message, state) => {
-      if (!statusElement) return;
-      statusElement.textContent = message;
-      statusElement.dataset.state = state;
-    };
-
-    const toDebugString = (value) => {
-      if (value === null || value === undefined) return '';
-      if (typeof value === 'string') return value;
-      try {
-        return JSON.stringify(value);
-      } catch (_error) {
-        return String(value);
-      }
-    };
-
-    const buildErrorDetails = (error) => {
-      const details = [
-        error?.name ? `name=${error.name}` : null,
-        error?.message ? `message=${error.message}` : null,
-        error?.code ? `code=${error.code}` : null,
-        error?.status ? `status=${error.status}` : null,
-        error?.details ? `details=${toDebugString(error.details)}` : null,
-        error?.hint ? `hint=${error.hint}` : null,
-        error?.context ? `context=${toDebugString(error.context)}` : null,
-      ].filter(Boolean);
-
-      return details.length ? details.join(' | ') : 'Unknown error';
-    };
-
-    const getMetadata = () => {
-      const utmParams = {
-        utm_source: pageUrl.searchParams.get('utm_source') || null,
-        utm_medium: pageUrl.searchParams.get('utm_medium') || null,
-        utm_campaign: pageUrl.searchParams.get('utm_campaign') || null,
-        utm_content: pageUrl.searchParams.get('utm_content') || null,
-        utm_term: pageUrl.searchParams.get('utm_term') || null,
-      };
-
-      return {
-        submitted_at: new Date().toISOString(),
-        source_page: pageUrl.pathname,
-        full_url: pageUrl.toString(),
-        referrer: document.referrer || null,
-        user_agent: navigator.userAgent,
-        language: navigator.language || null,
-        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || null,
-        ...utmParams,
-      };
-    };
-
-
-    const openModal = (modalName) => {
-      if (!modalLayer) return;
-      const targetModal = document.getElementById(`${modalName}-modal`);
-      if (!targetModal) return;
-
-      modalLayer.hidden = false;
-      document.body.classList.add('modal-open');
-      modals.forEach((modal) => {
-        modal.hidden = modal !== targetModal;
-      });
-
-      window.requestAnimationFrame(() => {
-        const closeButton = targetModal.querySelector('[data-modal-close]');
-        closeButton?.focus();
-      });
-    };
-
-    const closeModal = () => {
-      if (!modalLayer) return;
-      modalLayer.hidden = true;
-      modals.forEach((modal) => {
-        modal.hidden = true;
-      });
-      document.body.classList.remove('modal-open');
-      if (window.location.hash === '#about' || window.location.hash === '#privacy') {
-        history.replaceState(null, '', window.location.pathname + window.location.search);
-      }
-    };
-
-    modalTriggers.forEach((trigger) => {
-      trigger.addEventListener('click', (event) => {
-        event.preventDefault();
-        const modalName = trigger.dataset.modalOpen;
-        openModal(modalName);
-      });
-    });
-
-    if (modalLayer) {
-      modalLayer.addEventListener('click', (event) => {
-        if (event.target === modalLayer) {
-          closeModal();
-        }
-      });
-
-      modalLayer.querySelectorAll('[data-modal-close]').forEach((closeButton) => {
-        closeButton.addEventListener('click', closeModal);
-      });
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && !modalLayer.hidden) {
-          closeModal();
-        }
-      });
-
-      const hashModal = window.location.hash === '#about' ? 'about' : window.location.hash === '#privacy' ? 'privacy' : '';
-      if (hashModal) {
-        openModal(hashModal);
-      }
-    }
-
-    if (backToTopButton && floatingHeader) {
-      const updateBackToTopVisibility = () => {
-        const isScrolled = window.scrollY > 120;
-        floatingHeader.classList.toggle('is-scrolled', isScrolled);
-        document.body.classList.toggle('is-scrolled', isScrolled);
-      };
-
-      window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
-      updateBackToTopVisibility();
-
-      backToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-
-    if (waitlistForm) {
-      waitlistForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const submitButton = waitlistForm.querySelector('button[type="submit"]');
-        const email = emailInput?.value.trim() || '';
-        const singleEmailRegex = /^[^\s@,]+@[^\s@,]+\.[^\s@,]+$/;
-
-        if (!singleEmailRegex.test(email)) {
-          setFormStatus('Please enter one valid email address.', 'error');
-          return;
-        }
-
-        const supabaseClient = await getSupabaseClient();
-        if (!supabaseClient) {
-          setFormStatus('Configuration error: Supabase client is unavailable. Please try again later.', 'error');
-          return;
-        }
-
-        if (!functionName) {
-          setFormStatus('Configuration error: edge function name is missing.', 'error');
-          return;
-        }
-
-        if (submitButton) {
-          submitButton.disabled = true;
-          submitButton.textContent = 'Submitting...';
-        }
-
-        setFormStatus('Submitting your request...', 'pending');
-
-        const payload = {
-          email,
-          metadata: getMetadata(),
-        };
-
-        try {
-          const { data, error } = await supabaseClient.functions.invoke(functionName, {
-            body: payload,
-          });
-
-          if (error) {
-            throw error;
-          }
-
-          const successDetails = toDebugString(data) || 'No response body';
-          waitlistForm.reset();
-          setFormStatus(
-            debugResponses ? `Success response: ${successDetails}` : 'Success! You have been added to the waitlist.',
-            'success',
-          );
-        } catch (error) {
-          const errorDetails = buildErrorDetails(error);
-          setFormStatus(
-            debugResponses ? `Error response: ${errorDetails}` : 'We could not submit your email. Please try again.',
-            'error',
-          );
-          console.error('Waitlist submission failed:', error);
-        } finally {
-          if (submitButton) {
-            submitButton.disabled = false;
-            submitButton.textContent = 'Join Waitlist';
-          }
-        }
-      });
-    }
-
-    loopGalleryTracks.forEach((track) => {
-      const gallery = track.closest('.js-loop-gallery');
-      if (!gallery) return;
-
-      const scrollButtons = gallery.querySelectorAll('.gallery-btn');
-      const originalSlides = Array.from(track.children);
-      const cloneCount = originalSlides.length;
-
-      originalSlides.forEach((slide) => {
-        const clone = slide.cloneNode(true);
-        clone.setAttribute('aria-hidden', 'true');
-        track.appendChild(clone);
-      });
-
-      const getSlideWidth = () => {
-        const gapValue = Number.parseFloat(window.getComputedStyle(track).columnGap) || 0;
-        return track.clientWidth + gapValue;
-      };
-
-      const goToIndex = (index, behavior = 'smooth') => {
-        track.scrollTo({ left: getSlideWidth() * index, behavior });
-      };
-
-      const getCurrentIndex = () => {
-        const slideWidth = getSlideWidth();
-        if (!slideWidth) return 0;
-        return Math.round(track.scrollLeft / slideWidth) % cloneCount;
-      };
-
-      const advanceNext = (behavior = 'smooth') => {
-        const currentIndex = getCurrentIndex();
-        if (currentIndex >= cloneCount - 1) {
-          goToIndex(0, 'auto');
-          return;
-        }
-
-        goToIndex(currentIndex + 1, behavior);
-      };
-
-      const advancePrev = (behavior = 'smooth') => {
-        const currentIndex = getCurrentIndex();
-        if (currentIndex <= 0) {
-          goToIndex(cloneCount - 1, 'auto');
-          return;
-        }
-
-        goToIndex(currentIndex - 1, behavior);
-      };
-
-      track.addEventListener('scroll', () => {
-        const slideWidth = getSlideWidth();
-        const loopPoint = slideWidth * cloneCount;
-        if (track.scrollLeft >= loopPoint) {
-          goToIndex(0, 'auto');
-        }
-      });
-
-      scrollButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          const direction = button.dataset.scroll === 'next' ? 1 : -1;
-          if (direction > 0) {
-            advanceNext('smooth');
-            return;
-          }
-
-          advancePrev('smooth');
-        });
-      });
-
-      window.setInterval(() => {
-        advanceNext('smooth');
-      }, 3100);
-    });
-  </script>
-</body>
+  </body>
 </html>
