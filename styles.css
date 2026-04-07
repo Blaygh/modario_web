@@ -55,10 +55,16 @@ footer,
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
-  color: var(--burgundy);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(190px, 45vw);
+}
+
+.header-brand img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .back-to-top-fab {
