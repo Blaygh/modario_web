@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Modario mark</title>
+  <desc id="desc">Abstract interlocking Modario symbol in burgundy.</desc>
+  <rect width="256" height="256" rx="28" fill="#faf7f5"/>
+  <g fill="none" stroke="#8c1237" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M62 70h66l-26 22h-40v26"/>
+    <path d="M194 70h-48l-58 52"/>
+    <path d="M194 118V92h-32l-60 54H62"/>
+    <path d="M62 186v-44h54l60-54"/>
+    <path d="M194 186v-44h-34l-56 44"/>
+    <path d="M110 186v-24h34l48-44"/>
+  </g>
+</svg>
