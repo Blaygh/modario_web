@@ -3,103 +3,160 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modario — Your Personal Styling Companion</title>
-    <meta
-      name="description"
-      content="Modario helps you get dressed with weather-aware outfit recommendations, a virtual wardrobe, and personalized avatars."
-    />
+    <title>Modario — Style with Confidence</title>
+    <meta name="description" content="Modario helps you plan outfits with weather-aware recommendations, a virtual wardrobe, and avatar-powered previews." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="site-home">
-    <header class="floating-header home-header">
-      <a class="brand-link" href="#top" aria-label="Modario home">Modario</a>
-      <nav class="top-nav" aria-label="Primary">
-        <a href="#features">Features</a>
-        <a href="#how-it-works">How it works</a>
-        <a class="header-cta" href="waitlist.html">Join Waitlist</a>
-      </nav>
+  <body>
+    <header class="floating-header">
+      <span class="header-brand" aria-label="Modario">Modario</span>
+      <a class="header-cta" href="waitlist.html">Join Waitlist</a>
     </header>
 
-    <main id="top">
-      <section class="hero home-hero fade-in-landing" aria-labelledby="home-hero-title">
-        <p class="eyebrow">Fashion, forecast, and confidence</p>
-        <h1 id="home-hero-title">The full Modario experience.</h1>
-        <p class="hero-subtext">Plan outfits with live weather insights, organize a virtual wardrobe, and style yourself on a personalized avatar before you leave home.</p>
+    <button type="button" class="back-to-top-fab" id="back-to-top" aria-label="Back to top">↑</button>
+
+    <main>
+      <section class="hero reveal" id="hero" aria-labelledby="hero-title">
+        <p class="eyebrow">Fashion lifestyle app</p>
+        <h1 id="hero-title" class="hero-title"><span class="type-style">Style</span><span class="with-modario">with Modario</span></h1>
+        <p class="hero-subtext">Weather-smart outfit planning. Virtual wardrobe organization. Avatar-based outfit previews.</p>
         <div class="hero-cta-row">
           <a class="btn primary" href="waitlist.html">Join the Waitlist</a>
-          <a class="btn secondary" href="#features">Explore Features</a>
+          <a class="btn secondary" href="support.html">Support Development</a>
+        </div>
+      </section>
+
+      <section class="story reveal mornings-layout" aria-labelledby="mornings-title">
+        <div class="story-copy">
+          <p class="eyebrow">Modario is for Mornings</p>
+          <h2 id="mornings-title">No more closet indecision.</h2>
+          <p>Start each day with confident recommendations.</p>
+        </div>
+        <div class="story-visual mornings-gallery card-lift js-loop-gallery" aria-label="Outfit previews">
+          <div class="mornings-gallery-track js-loop-track" id="mornings-gallery-track">
+            <figure class="mornings-gallery-item"><img src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/gym.png" alt="Planned for today outfit preview" /></figure>
+            <figure class="mornings-gallery-item"><img src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/date.png" alt="Next date outfit preview" /></figure>
+            <figure class="mornings-gallery-item"><img src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/official.png" alt="Office outfit preview" /></figure>
+          </div>
+          <div class="mornings-gallery-controls" aria-label="Scroll outfit previews">
+            <button type="button" class="gallery-btn" data-scroll="prev" aria-label="Scroll left">←</button>
+            <button type="button" class="gallery-btn" data-scroll="next" aria-label="Scroll right">→</button>
+          </div>
         </div>
       </section>
 
       <section class="story reveal" id="features" aria-labelledby="weather-title">
         <div class="story-copy">
-          <p class="eyebrow">Weather Integration</p>
-          <h2 id="weather-title">Dress for real conditions.</h2>
-          <p>Modario uses weather data to suggest smart layers, fabrics, and footwear for the exact forecast in your area.</p>
-        </div>
-        <div class="story-visual card-lift">
-          <img src="https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&w=1200&q=80" alt="Person checking weather-aware outfit suggestions on a phone" />
-        </div>
-      </section>
-
-      <section class="story reveal reverse" aria-labelledby="wardrobe-title">
-        <div class="story-copy">
           <p class="eyebrow">Virtual Wardrobe</p>
-          <h2 id="wardrobe-title">Your closet, digitized.</h2>
-          <p>Upload and organize your clothing into categories, build outfits in seconds, and track what you actually wear each week.</p>
+          <h2 id="wardrobe-title">Everything you own, beautifully organized.</h2>
+          <p>Digitize your closet and discover new combinations instantly.</p>
         </div>
         <div class="story-visual card-lift">
-          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80" alt="Cleanly organized virtual wardrobe preview" />
+          <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=80" alt="Wardrobe organization screen concept" />
         </div>
       </section>
 
-      <section class="story reveal" aria-labelledby="avatar-title">
+      <section class="story reveal" aria-labelledby="weather-title">
+        <div class="story-copy">
+          <p class="eyebrow">Weather Integrations</p>
+          <h2 id="weather-title">Dress for what the day actually feels like.</h2>
+          <p>Forecast-aware outfit ideas help you layer better and stay comfortable.</p>
+        </div>
+        <div class="story-visual card-lift">
+          <img src="https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&w=1200&q=80" alt="Weather-aware styling concept" />
+        </div>
+      </section>
+
+      <section class="story reveal reverse" aria-labelledby="avatar-title">
         <div class="story-copy">
           <p class="eyebrow">Avatar Selection</p>
-          <h2 id="avatar-title">Try looks on your avatar.</h2>
-          <p>Customize your avatar to match your style profile and preview combinations before committing to a look.</p>
+          <h2 id="avatar-title">Preview outfits on your avatar.</h2>
+          <p>Try combinations before you wear them and reduce decision fatigue.</p>
         </div>
         <div class="story-visual card-lift">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Digital avatar styling concept with outfit options" />
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80" alt="Avatar outfit preview concept" />
         </div>
       </section>
 
-      <section class="feature-strip reveal" id="how-it-works" aria-labelledby="how-title">
-        <p class="eyebrow">How it works</p>
-        <h2 id="how-title">From closet chaos to daily clarity.</h2>
-        <div class="feature-grid">
-          <article class="feature card-lift">
-            <h3>1. Add your wardrobe</h3>
-            <p>Capture your key clothing items once.</p>
-          </article>
-          <article class="feature card-lift">
-            <h3>2. Sync forecast data</h3>
-            <p>Get context-aware outfit suggestions each day.</p>
-          </article>
-          <article class="feature card-lift">
-            <h3>3. Preview with avatars</h3>
-            <p>Check fit and style before stepping out.</p>
-          </article>
+      <section class="product-ui reveal" id="product-ui" aria-labelledby="product-ui-title">
+        <p class="eyebrow">Product UI</p>
+        <h2 id="product-ui-title">An interface made for you.</h2>
+        <div class="ui-gradient-card card-lift">
+          <img class="product-ui-image" src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/ui.png" alt="Modario screens" />
         </div>
       </section>
 
-      <section class="final-cta reveal" aria-labelledby="ready-title">
-        <h2 id="ready-title">Ready to style smarter with Modario?</h2>
-        <p>Get early access and be first to try weather-aware outfit planning.</p>
-        <a class="btn primary" href="waitlist.html">Go to Waitlist Page</a>
+      <section class="final-cta reveal" aria-labelledby="waitlist-title">
+        <h2 id="waitlist-title">Join Modario</h2>
+        <p>Be first to try the smarter way to get dressed.</p>
+        <a class="btn primary" href="waitlist.html">Go to Waitlist</a>
       </section>
     </main>
 
     <footer>
       <span>Modario</span>
       <nav aria-label="Footer">
-        <a href="#features">Features</a>
-        <a href="#how-it-works">How it works</a>
+        <a href="index.html">Home</a>
         <a href="waitlist.html">Waitlist</a>
+        <a href="support.html">Support</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
       </nav>
     </footer>
+
+    <script type="module">
+      const loopGalleryTracks = document.querySelectorAll('.js-loop-track');
+      const backToTopButton = document.getElementById('back-to-top');
+      const floatingHeader = document.querySelector('.floating-header');
+
+      if (backToTopButton && floatingHeader) {
+        const updateBackToTopVisibility = () => {
+          const isScrolled = window.scrollY > 120;
+          floatingHeader.classList.toggle('is-scrolled', isScrolled);
+          document.body.classList.toggle('is-scrolled', isScrolled);
+        };
+
+        window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+        updateBackToTopVisibility();
+        backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      }
+
+      loopGalleryTracks.forEach((track) => {
+        const gallery = track.closest('.js-loop-gallery');
+        if (!gallery) return;
+
+        const scrollButtons = gallery.querySelectorAll('.gallery-btn');
+        const originalSlides = Array.from(track.children);
+        const cloneCount = originalSlides.length;
+
+        originalSlides.forEach((slide) => {
+          const clone = slide.cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          track.appendChild(clone);
+        });
+
+        const getSlideWidth = () => {
+          const gapValue = Number.parseFloat(window.getComputedStyle(track).columnGap) || 0;
+          return track.clientWidth + gapValue;
+        };
+
+        const goToIndex = (index, behavior = 'smooth') => track.scrollTo({ left: getSlideWidth() * index, behavior });
+        const getCurrentIndex = () => Math.round(track.scrollLeft / getSlideWidth()) % cloneCount;
+
+        scrollButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const direction = button.dataset.scroll;
+            const currentIndex = getCurrentIndex();
+            const nextIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
+            if (nextIndex >= cloneCount) return goToIndex(0, 'auto');
+            if (nextIndex < 0) return goToIndex(cloneCount - 1, 'auto');
+            goToIndex(nextIndex);
+          });
+        });
+      });
+    </script>
   </body>
 </html>

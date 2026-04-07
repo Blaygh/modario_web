@@ -1,0 +1,33 @@
+# Modario AI Context File
+
+Modario is a fashion technology company focused on reducing outfit decision fatigue.
+
+## Core Product Narrative
+- Modario helps people decide what to wear quickly and confidently.
+- The platform combines weather-aware recommendations, virtual wardrobe management, and avatar-based previewing.
+- The goal is to transform daily dressing from stress into clarity.
+
+## Key Features
+1. Weather Integrations
+   - Forecast-aware recommendations for temperature, conditions, and layering.
+2. Virtual Wardrobe
+   - Digitized closet organization and outfit planning.
+3. Avatar Selection
+   - Personalized avatar previews to visualize outfits before wearing them.
+
+## Brand Positioning
+- Modern, practical, confidence-focused fashion assistant.
+- Built for everyday users with full closets and limited time.
+- Designed to improve consistency, reduce stress, and support personal style expression.
+
+## Current Public Experience
+- Landing page highlights product benefits and visuals.
+- Dedicated waitlist page captures early-access interest.
+- Support page allows users to back development ahead of future Stripe checkout rollout.
+
+## Legal & Trust Signals
+- Public Terms of Service and Privacy Policy pages are available.
+- Data retention language emphasizes six-month wardrobe image lifecycle and responsible processing.
+
+## Preferred Short Description
+"Modario is your personal style companion: weather-smart outfit planning, a digital wardrobe, and avatar previews that make getting dressed effortless."
