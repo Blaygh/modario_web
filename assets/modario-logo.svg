@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 180" role="img" aria-labelledby="title desc">
+  <title id="title">Modario logo</title>
+  <desc id="desc">Modario brand mark with wordmark.</desc>
+  <rect width="512" height="180" fill="none"/>
+  <g transform="translate(12,6)">
+    <rect width="120" height="120" rx="18" fill="#faf7f5"/>
+    <g fill="none" stroke="#8c1237" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 28h42l-16 14H24v16"/>
+      <path d="M96 28H66L29 61"/>
+      <path d="M96 58V42H76L38 76H24"/>
+      <path d="M24 96V69h35l38-34"/>
+      <path d="M96 96V69H74L39 96"/>
+      <path d="M55 96V81h20l31-29"/>
+    </g>
+  </g>
+  <text x="154" y="96" fill="#8c1237" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif" font-size="68" font-weight="800" letter-spacing="-1">modario</text>
+</svg>
