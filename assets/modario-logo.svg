@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 180" role="img" aria-labelledby="title desc">
+  <title id="title">Modario logo</title>
+  <desc id="desc">Modario symbol and wordmark.</desc>
+  <rect width="700" height="180" fill="none"/>
+  <g transform="translate(6,10) scale(0.24)">
+    <g fill="#941333">
+      <rect x="122" y="155" width="524" height="198" rx="20" />
+      <rect x="122" y="431" width="524" height="198" rx="20" />
+      <path d="M434 145h188a24 24 0 0 1 17 41L325 498a70 70 0 0 1-50 21H122v-44h167a51 51 0 0 0 36-15L434 145z"/>
+      <path d="M334 639H146a24 24 0 0 1-17-41l313-312a70 70 0 0 1 50-21h154v44H478a51 51 0 0 0-36 15L334 639z"/>
+    </g>
+    <g fill="#f3efea">
+      <path d="M200 233h190l-35 35H226v66h-26z"/>
+      <path d="M584 334h-26v-66H470l35-35h53a26 26 0 0 1 26 26z"/>
+      <path d="M200 551v-94h26v68h129l-35 35H200z"/>
+      <path d="M584 551a26 26 0 0 1-26 26h-53l35-35h18v-68h26z"/>
+      <path d="M250 340l212-205h57L287 359a24 24 0 1 1-37-19z"/>
+      <path d="M518 448L306 653h-57l232-224a24 24 0 1 1 37 19z"/>
+    </g>
+  </g>
+  <text x="182" y="118" fill="#941333" font-family="Avenir Next, Montserrat, Inter, system-ui, sans-serif" font-size="92" font-weight="700" letter-spacing="-2">modario</text>
+</svg>

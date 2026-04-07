@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Modario brand mark</title>
+  <desc id="desc">Interlocking Modario symbol.</desc>
+  <rect width="1024" height="1024" fill="#f3efea" />
+
+  <g fill="#941333">
+    <rect x="250" y="275" width="524" height="198" rx="20" />
+    <rect x="250" y="551" width="524" height="198" rx="20" />
+    <path d="M562 265h188a24 24 0 0 1 17 41L453 618a70 70 0 0 1-50 21H250v-44h167a51 51 0 0 0 36-15L562 265z"/>
+    <path d="M462 759H274a24 24 0 0 1-17-41l313-312a70 70 0 0 1 50-21h154v44H606a51 51 0 0 0-36 15L462 759z"/>
+  </g>
+
+  <g fill="#f3efea">
+    <path d="M328 353h190l-35 35h-129v66h-26z"/>
+    <path d="M712 454h-26v-66H598l35-35h53a26 26 0 0 1 26 26z"/>
+    <path d="M328 671v-94h26v68h129l-35 35H328z"/>
+    <path d="M712 671a26 26 0 0 1-26 26h-53l35-35h18v-68h26z"/>
+    <path d="M378 460l212-205h57L415 479a24 24 0 1 1-37-19z"/>
+    <path d="M646 568L434 773h-57l232-224a24 24 0 1 1 37 19z"/>
+  </g>
+</svg>
