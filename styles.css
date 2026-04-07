@@ -615,6 +615,27 @@ body.modal-open {
   box-shadow: 0 18px 35px rgba(0, 0, 0, 0.1);
 }
 
+.feature-story .story-copy,
+.feature-story .story-visual {
+  transition: transform 500ms ease, opacity 500ms ease;
+}
+
+.feature-story .story-copy {
+  opacity: 0.4;
+  transform: translateY(18px);
+}
+
+.feature-story .story-visual {
+  opacity: 0.4;
+  transform: translateY(18px);
+}
+
+.feature-story.is-active .story-copy,
+.feature-story.is-active .story-visual {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
 @keyframes fade-up {
   to {
     opacity: 1;
@@ -654,6 +675,12 @@ body.modal-open {
     transition: none;
     transform: none;
     opacity: 1;
+  }
+
+  .feature-story .story-copy,
+  .feature-story .story-visual {
+    opacity: 1;
+    transform: none;
   }
 
   .type-style {
@@ -723,6 +750,22 @@ body.modal-open {
 
   .story-visual img {
     height: 360px;
+  }
+
+  .feature-story .story-copy {
+    transform: translateX(-42px);
+  }
+
+  .feature-story .story-visual {
+    transform: translateX(42px);
+  }
+
+  .feature-story.reverse .story-copy {
+    transform: translateX(42px);
+  }
+
+  .feature-story.reverse .story-visual {
+    transform: translateX(-42px);
   }
 
   .mornings-gallery-controls {
