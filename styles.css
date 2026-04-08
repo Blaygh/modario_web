@@ -58,12 +58,14 @@ footer,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: min(190px, 45vw);
+  height: clamp(24px, 4.2vw, 32px);
+  max-width: min(190px, 45vw);
 }
 
 .header-brand img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
   display: block;
 }
 
