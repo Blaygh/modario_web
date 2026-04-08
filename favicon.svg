@@ -1,13 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
-  <title id="title">Modario mark</title>
-  <desc id="desc">Abstract interlocking Modario symbol in burgundy.</desc>
-  <rect width="256" height="256" rx="28" fill="#faf7f5"/>
-  <g fill="none" stroke="#8c1237" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M62 70h66l-26 22h-40v26"/>
-    <path d="M194 70h-48l-58 52"/>
-    <path d="M194 118V92h-32l-60 54H62"/>
-    <path d="M62 186v-44h54l60-54"/>
-    <path d="M194 186v-44h-34l-56 44"/>
-    <path d="M110 186v-24h34l48-44"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Modario app icon</title>
+  <desc id="desc">Interlocking Modario monogram in burgundy on a warm neutral background.</desc>
+  <rect width="1024" height="1024" fill="#f4efea" />
+  <g fill="none" stroke="#8b0f32" stroke-width="95" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M290 330h180c32 0 62-12 85-33l0 0" />
+    <path d="M290 330v140h70" />
+    <path d="M740 330h-170c-34 0-66 13-90 37L400 440" />
+    <path d="M740 330v140h-70" />
+
+    <path d="M290 690h180c34 0 66-13 90-37l80-73" />
+    <path d="M290 690v140" />
+    <path d="M740 690h-170c-32 0-62 12-85 33l0 0" />
+    <path d="M740 690v140" />
+
+    <path d="M400 830v-60h90c27 0 53-10 73-28l170-157" />
   </g>
 </svg>
