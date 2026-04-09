@@ -64,19 +64,9 @@
       const supabaseUrl = supabaseConfig.url || '';
       const supabaseAnonKey = supabaseConfig.anonKey || '';
 
-      let supabase = null;
-      let supabaseClientPromise = null;
-
-      const getSupabaseClient = async () => {
-        if (!supabaseUrl || !supabaseAnonKey) return null;
-        if (supabase) return supabase;
-        if (!supabaseClientPromise) {
-          supabaseClientPromise = import('https://esm.sh/@supabase/supabase-js@2')
-            .then(({ createClient }) => createClient(supabaseUrl, supabaseAnonKey))
-            .catch(() => null);
-        }
-        supabase = await supabaseClientPromise;
-        return supabase;
+      const getFunctionEndpoint = () => {
+        if (!supabaseUrl || !functionName) return '';
+        return `${supabaseUrl.replace(/\/$/, '')}/functions/v1/${functionName}`;
       };
 
       const setFormStatus = (message, state) => {
@@ -104,8 +94,8 @@
           return;
         }
 
-        const supabaseClient = await getSupabaseClient();
-        if (!supabaseClient || !functionName) {
+        const functionEndpoint = getFunctionEndpoint();
+        if (!functionEndpoint || !supabaseAnonKey) {
           setFormStatus('Configuration error. Please try again later.', 'error');
           return;
         }
@@ -115,8 +105,20 @@
         setFormStatus('Submitting your request...', 'pending');
 
         try {
-          const { error } = await supabaseClient.functions.invoke(functionName, { body: { email, metadata: getMetadata() } });
-          if (error) throw error;
+          const response = await fetch(functionEndpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              apikey: supabaseAnonKey,
+              Authorization: `Bearer ${supabaseAnonKey}`,
+            },
+            body: JSON.stringify({ email, metadata: getMetadata() }),
+          });
+
+          if (!response.ok) {
+            throw new Error(`Waitlist request failed with status ${response.status}`);
+          }
+
           waitlistForm.reset();
           setFormStatus('Success! You have been added to the waitlist.', 'success');
         } catch (_error) {
