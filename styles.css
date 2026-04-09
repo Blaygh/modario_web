@@ -44,6 +44,8 @@ footer,
   border: 1px solid rgba(255, 255, 255, 0.95);
   box-shadow: var(--shadow);
   backdrop-filter: blur(8px);
+  min-height: 56px;
+  overflow: hidden;
 }
 
 
@@ -58,12 +60,15 @@ footer,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: min(190px, 45vw);
+  width: min(176px, 42vw);
+  max-height: 34px;
 }
 
 .header-brand img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 34px;
+  height: 100%;
   display: block;
 }
 
@@ -255,6 +260,12 @@ h3 {
   text-align: center;
 }
 
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .btn.primary,
 .waitlist-form button {
   background: var(--burgundy);
@@ -430,6 +441,10 @@ h3 {
 .final-cta p,
 .final-cta h2 {
   margin-inline: auto;
+}
+
+.final-cta .btn {
+  margin-top: 1rem;
 }
 
 .waitlist-form {
@@ -712,6 +727,11 @@ body.modal-open {
 
   .story.mornings-layout .story-visual {
     margin-top: 0;
+    order: 1;
+  }
+
+  .story.mornings-layout .story-copy {
+    order: 2;
   }
 }
 
