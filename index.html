@@ -11,13 +11,14 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="./runtime-config.js"></script>
   </head>
   <body>
     <header class="floating-header">
       <a class="header-brand" href="index.html" aria-label="Modario home">
         <img src="assets/modario-mark.svg" alt="Modario" />
       </a>
-      <a class="header-cta" href="waitlist.html">Join Waitlist</a>
+      <a class="header-cta" href="#waitlist" data-open-waitlist>Join Waitlist</a>
     </header>
 
     <button type="button" class="back-to-top-fab" id="back-to-top" aria-label="Back to top">↑</button>
@@ -28,7 +29,7 @@
         <h1 id="hero-title" class="hero-title"><span class="type-style">Style</span><span class="with-modario">with Modario</span></h1>
         <p class="hero-subtext">Weather-smart outfit planning. Virtual wardrobe organization. Avatar-based outfit previews.</p>
         <div class="hero-cta-row">
-          <a class="btn primary" href="waitlist.html">Join the Waitlist</a>
+          <a class="btn primary" href="#waitlist" data-open-waitlist>Join the Waitlist</a>
           <a class="btn secondary" href="support.html">Support Development</a>
         </div>
       </section>
@@ -96,15 +97,31 @@
       <section class="final-cta reveal" aria-labelledby="waitlist-title">
         <h2 id="waitlist-title">Join Modario</h2>
         <p>Be first to try the smarter way to get dressed.</p>
-        <a class="btn primary" href="waitlist.html">Go to Waitlist</a>
+        <a class="btn primary" href="#waitlist" data-open-waitlist>Go to Waitlist</a>
       </section>
     </main>
+
+    <div class="modal-layer" id="waitlist-layer" hidden>
+      <section class="site-modal" id="waitlist-modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-modal-title">
+        <button type="button" class="modal-close" id="waitlist-close" aria-label="Close waitlist modal">×</button>
+        <section class="final-cta reveal" id="waitlist" aria-labelledby="waitlist-modal-title">
+          <h2 id="waitlist-modal-title">Join the Modario Waitlist</h2>
+          <p>Be first to try weather-aware outfit planning and your virtual wardrobe.</p>
+          <form class="waitlist-form" aria-label="Waitlist form" data-function-name="join-waitlist">
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="Email" required />
+            <button type="submit">Join Waitlist</button>
+          </form>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </section>
+      </section>
+    </div>
 
     <footer>
       <span>Modario</span>
       <nav aria-label="Footer">
         <a href="index.html">Home</a>
-        <a href="waitlist.html">Waitlist</a>
+        <a href="#waitlist" data-open-waitlist>Waitlist</a>
         <a href="support.html">Support</a>
         <a href="terms.html">Terms</a>
         <a href="privacy.html">Privacy</a>
@@ -112,10 +129,24 @@
     </footer>
 
     <script type="module">
+      window.MODARIO_SUPABASE = window.MODARIO_SUPABASE || {
+        url: 'https://bcaajafisvrttvinjfad.supabase.co',
+        anonKey: 'sb_publishable_EzlbWXkh0hMbajPO63X6Vg_wvqTXvLh',
+        functionName: 'join-waitlist',
+      };
+
       const loopGalleryTracks = document.querySelectorAll('.js-loop-track');
       const featureStories = document.querySelectorAll('.feature-story');
       const backToTopButton = document.getElementById('back-to-top');
       const floatingHeader = document.querySelector('.floating-header');
+      const waitlistLayer = document.getElementById('waitlist-layer');
+      const waitlistModal = document.getElementById('waitlist-modal');
+      const waitlistClose = document.getElementById('waitlist-close');
+      const waitlistLinks = document.querySelectorAll('[data-open-waitlist]');
+      const waitlistForm = waitlistModal?.querySelector('.waitlist-form');
+      const emailInput = document.getElementById('email');
+      const statusElement = document.getElementById('form-status');
+      const pageUrl = new URL(window.location.href);
 
       if (backToTopButton && floatingHeader) {
         const updateBackToTopVisibility = () => {
@@ -128,6 +159,108 @@
         updateBackToTopVisibility();
         backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
       }
+
+      const setWaitlistOpen = (isOpen) => {
+        if (!waitlistLayer) return;
+        waitlistLayer.hidden = !isOpen;
+        document.body.classList.toggle('modal-open', isOpen);
+        if (isOpen) {
+          window.history.replaceState({}, '', `${window.location.pathname}#waitlist`);
+          window.setTimeout(() => emailInput?.focus(), 0);
+        } else if (window.location.hash === '#waitlist') {
+          window.history.replaceState({}, '', window.location.pathname);
+        }
+      };
+
+      waitlistLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          setWaitlistOpen(true);
+        });
+      });
+
+      waitlistClose?.addEventListener('click', () => setWaitlistOpen(false));
+      waitlistLayer?.addEventListener('click', (event) => {
+        if (event.target === waitlistLayer) setWaitlistOpen(false);
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setWaitlistOpen(false);
+      });
+
+      if (window.location.hash === '#waitlist') {
+        setWaitlistOpen(true);
+      }
+
+      const configuredFunctionName = waitlistForm?.dataset.functionName?.trim() || '';
+      const supabaseConfig = window.MODARIO_SUPABASE || {};
+      const functionName = configuredFunctionName || supabaseConfig.functionName || '';
+      const supabaseUrl = supabaseConfig.url || '';
+      const supabaseAnonKey = supabaseConfig.anonKey || '';
+
+      const getFunctionEndpoint = () => {
+        if (!supabaseUrl || !functionName) return '';
+        return `${supabaseUrl.replace(/\/$/, '')}/functions/v1/${functionName}`;
+      };
+
+      const setFormStatus = (message, state) => {
+        if (!statusElement) return;
+        statusElement.textContent = message;
+        statusElement.dataset.state = state;
+      };
+
+      const getMetadata = () => ({
+        submitted_at: new Date().toISOString(),
+        source_page: pageUrl.pathname,
+        full_url: pageUrl.toString(),
+        referrer: document.referrer || null,
+        user_agent: navigator.userAgent,
+      });
+
+      waitlistForm?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const submitButton = waitlistForm.querySelector('button[type="submit"]');
+        const email = emailInput?.value.trim() || '';
+        const singleEmailRegex = /^[^\s@,]+@[^\s@,]+\.[^\s@,]+$/;
+
+        if (!singleEmailRegex.test(email)) {
+          setFormStatus('Please enter one valid email address.', 'error');
+          return;
+        }
+
+        const functionEndpoint = getFunctionEndpoint();
+        if (!functionEndpoint || !supabaseAnonKey) {
+          setFormStatus('Configuration error. Please try again later.', 'error');
+          return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+        setFormStatus('Submitting your request...', 'pending');
+
+        try {
+          const response = await fetch(functionEndpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              apikey: supabaseAnonKey,
+              Authorization: `Bearer ${supabaseAnonKey}`,
+            },
+            body: JSON.stringify({ email, metadata: getMetadata() }),
+          });
+
+          if (!response.ok) {
+            throw new Error(`Waitlist request failed with status ${response.status}`);
+          }
+
+          waitlistForm.reset();
+          setFormStatus('Success! You have been added to the waitlist.', 'success');
+        } catch (_error) {
+          setFormStatus('We could not submit your email. Please try again.', 'error');
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Join Waitlist';
+        }
+      });
 
       loopGalleryTracks.forEach((track) => {
         const gallery = track.closest('.js-loop-gallery');
