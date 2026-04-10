@@ -272,6 +272,15 @@ section {
   color: var(--dusty-rose);
 }
 
+.feature-label-gold {
+  color: var(--gold);
+}
+
+.legal-doc h2,
+.legal-doc h3 {
+  color: var(--charcoal);
+}
+
 
 h1,
 h2,
