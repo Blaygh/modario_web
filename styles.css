@@ -140,6 +140,121 @@ main {
   padding: 4rem 0 4.5rem;
 }
 
+.support-hero {
+  margin-top: 4.25rem;
+}
+
+.support-hero h1 {
+  font-size: clamp(2.5rem, 13vw, 4.2rem);
+  letter-spacing: -0.04em;
+}
+
+.support-hero p,
+.support-card p,
+.support-faq p {
+  margin-top: 0.85rem;
+  font-size: clamp(1rem, 3vw, 1.12rem);
+  line-height: 1.5;
+  color: rgba(26, 26, 26, 0.82);
+}
+
+.support-card,
+.support-faq {
+  max-width: 780px;
+  margin-inline: auto;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(102, 0, 51, 0.16);
+  box-shadow: 0 20px 40px rgba(102, 0, 51, 0.08);
+  padding: 1.8rem 1.15rem;
+}
+
+.support-card {
+  margin-top: 2rem;
+}
+
+.support-card h2,
+.support-faq h2 {
+  font-size: clamp(1.6rem, 6.8vw, 2.4rem);
+  line-height: 1.05;
+}
+
+.support-email {
+  color: var(--burgundy);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(102, 0, 51, 0.26);
+}
+
+.support-email:hover {
+  color: #4d0026;
+  border-bottom-color: rgba(77, 0, 38, 0.44);
+}
+
+.support-faq {
+  margin-top: 1.3rem;
+  text-align: left;
+}
+
+.support-faq .eyebrow,
+.support-faq h2 {
+  text-align: center;
+}
+
+.faq-list {
+  margin-top: 1.2rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(26, 26, 26, 0.04);
+  overflow: hidden;
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  color: var(--rose);
+  font-size: 1.2rem;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.faq-item[open] summary::after {
+  content: '−';
+}
+
+.faq-item p {
+  margin: 0;
+  padding: 0 1rem 1rem;
+  font-size: 0.97rem;
+}
+
+.faq-item summary:focus-visible {
+  outline: 2px solid rgba(138, 59, 87, 0.5);
+  outline-offset: -2px;
+}
+
 section {
   margin-top: 6rem;
   text-align: center;
@@ -848,6 +963,21 @@ body.modal-open {
 
   .waitlist-form button {
     white-space: nowrap;
+  }
+
+  .support-card,
+  .support-faq {
+    padding: 2.2rem 2rem;
+  }
+
+  .faq-item summary {
+    padding: 1.05rem 1.1rem;
+    font-size: 1.03rem;
+  }
+
+  .faq-item p {
+    padding: 0 1.1rem 1.05rem;
+    font-size: 1rem;
   }
 }
 
