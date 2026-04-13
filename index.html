@@ -18,7 +18,10 @@
       <a class="header-brand" href="index.html" aria-label="Modario home">
         <img src="assets/modario-mark.svg" alt="Modario" />
       </a>
-      <a class="header-cta" href="#waitlist" data-open-waitlist>Join Waitlist</a>
+      <div class="header-controls">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false">Dark</button>
+        <a class="header-cta" href="#waitlist" data-open-waitlist>Join Waitlist</a>
+      </div>
     </header>
 
     <button type="button" class="back-to-top-fab" id="back-to-top" aria-label="Back to top">↑</button>
@@ -314,5 +317,6 @@
         featureStories.forEach((story) => story.classList.add('is-active'));
       }
     </script>
+    <script src="theme-toggle.js"></script>
   </body>
 </html>
