@@ -1036,6 +1036,40 @@ body[data-theme='dark'] .floating-header {
   border-color: rgba(233, 237, 243, 0.14);
 }
 
+body[data-theme='dark'] .support-card,
+body[data-theme='dark'] .support-faq,
+body[data-theme='dark'] .final-cta,
+body[data-theme='dark'] .site-modal,
+body[data-theme='dark'] .faq-item,
+body[data-theme='dark'] .testimonial,
+body[data-theme='dark'] .feature {
+  background: rgba(25, 33, 43, 0.92);
+  border-color: rgba(233, 237, 243, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+body[data-theme='dark'] .waitlist-form input,
+body[data-theme='dark'] .modal-close,
+body[data-theme='dark'] .gallery-btn {
+  background: rgba(20, 27, 36, 0.94);
+  color: var(--text-primary);
+  border-color: rgba(233, 237, 243, 0.24);
+}
+
+body[data-theme='dark'] .modal-layer {
+  background: rgba(4, 8, 13, 0.58);
+}
+
+body[data-theme='dark'] footer {
+  border-top-color: rgba(233, 237, 243, 0.16);
+}
+
+body[data-theme='dark'] .support-email,
+body[data-theme='dark'] .site-modal a {
+  color: #b9d8f4;
+  border-bottom-color: rgba(185, 216, 244, 0.42);
+}
+
 body[data-theme='dark'] .support-hero p,
 body[data-theme='dark'] .support-card p,
 body[data-theme='dark'] .support-faq p,
@@ -1053,6 +1087,14 @@ body[data-theme='dark'] .top-nav a,
 body[data-theme='dark'] .waitlist-form input::placeholder,
 body[data-theme='dark'] .testimonial span {
   color: var(--text-secondary);
+}
+
+body[data-theme='dark'] .faq-item summary,
+body[data-theme='dark'] .form-status[data-state='pending'],
+body[data-theme='dark'] footer span,
+body[data-theme='dark'] .legal-doc h2,
+body[data-theme='dark'] .legal-doc h3 {
+  color: var(--text-primary);
 }
 
 body[data-theme='dark'] .theme-toggle {
