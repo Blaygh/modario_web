@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modario Billing</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="billing-page">
+  <main class="billing-screen" aria-label="Billing">
+    <section class="billing-header">
+      <h1>Billing</h1>
+      <p>Manage your subscription and keep premium styling tools active.</p>
+    </section>
+
+    <section class="plan-card current-plan" aria-label="Current plan">
+      <div class="plan-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" role="img">
+          <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M7.5 9.5h9M7.5 12h9M7.5 14.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="current-plan-copy">
+        <p class="eyebrow current-label">Current Plan</p>
+        <h2>Free</h2>
+        <p class="current-support">Upgrade to unlock your full style potential</p>
+      </div>
+    </section>
+
+    <section class="plan-card premium-card" aria-label="Premium plan">
+      <div class="premium-accent" aria-hidden="true"></div>
+      <header class="premium-heading">
+        <h2>Premium</h2>
+        <p>Unlock your full style potential</p>
+      </header>
+      <ul class="feature-list">
+        <li><span class="feature-icon" aria-hidden="true">✦</span><span>Unlimited outfit suggestions</span></li>
+        <li><span class="feature-icon" aria-hidden="true">✦</span><span>Save unlimited looks</span></li>
+        <li><span class="feature-icon" aria-hidden="true">✦</span><span>Plan outfits effortlessly</span></li>
+        <li><span class="feature-icon" aria-hidden="true">✦</span><span>Avatar try-ons &amp; wardrobe imports</span></li>
+        <li><span class="feature-icon" aria-hidden="true">✦</span><span>Early access to new features</span></li>
+      </ul>
+
+      <div class="price-grid" role="radiogroup" aria-label="Select a billing period">
+        <button type="button" class="price-option" data-plan="monthly" role="radio" aria-checked="false">
+          <span class="price-name">Monthly</span>
+          <span class="price-value">$9.99 / month</span>
+        </button>
+        <button type="button" class="price-option is-selected" data-plan="yearly" role="radio" aria-checked="true">
+          <span class="price-best-value">Best Value</span>
+          <span class="price-name">Yearly</span>
+          <span class="price-value">$83.99 / year</span>
+          <span class="save-badge">Save 30%</span>
+        </button>
+      </div>
+
+      <button type="button" id="startPremiumButton" class="start-premium-button" data-selected-plan="yearly">Start Premium</button>
+    </section>
+
+    <section class="plan-card manage-card" aria-label="Manage subscription">
+      <h3>Manage subscription in Apple settings</h3>
+      <p>Open your Apple subscription settings to manage or cancel your plan.</p>
+      <button type="button" class="manage-button" id="manageAppleButton">Open Apple Subscriptions</button>
+    </section>
+  </main>
+  <script src="billing.js"></script>
+</body>
+</html>
