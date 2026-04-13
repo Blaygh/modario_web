@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modario — Style with Confidence</title>
     <meta name="description" content="Modario helps you plan outfits with weather-aware recommendations, a virtual wardrobe, and avatar-powered previews." />
+    <link rel="canonical" href="https://www.modario.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Modario — Style with Confidence" />
+    <meta property="og:description" content="Plan outfits with weather-aware recommendations, a virtual wardrobe, and avatar-powered previews." />
+    <meta property="og:url" content="https://www.modario.io/" />
+    <meta property="og:image" content="https://www.modario.io/assets/modario-mark.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Modario — Style with Confidence" />
+    <meta name="twitter:description" content="Plan outfits with weather-aware recommendations, a virtual wardrobe, and avatar-powered previews." />
+    <meta name="twitter:image" content="https://www.modario.io/assets/modario-mark.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -12,6 +22,39 @@
     <link rel="apple-touch-icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css" />
     <script src="./runtime-config.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Modario",
+        "url": "https://www.modario.io/",
+        "logo": "https://www.modario.io/assets/modario-mark.svg",
+        "email": "support@modario.io"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Modario",
+        "url": "https://www.modario.io/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.modario.io/features.html"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Modario",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "iOS, Android",
+        "description": "Modario helps users plan outfits with weather-aware recommendations and a virtual wardrobe.",
+        "url": "https://www.modario.io/"
+      }
+    </script>
   </head>
   <body>
     <header class="floating-header">
@@ -102,6 +145,20 @@
         <p>Be first to try the smarter way to get dressed.</p>
         <a class="btn primary" href="#waitlist" data-open-waitlist>Go to Waitlist</a>
       </section>
+
+      <section class="story reveal" aria-labelledby="learn-more-title">
+        <div class="story-copy">
+          <p class="eyebrow feature-label-gold">Explore More</p>
+          <h2 id="learn-more-title">Learn how Modario works.</h2>
+          <p>Read our feature breakdown, pricing plans, company story, and support docs.</p>
+          <nav aria-label="Learn more links">
+            <a href="features.html">Explore features</a> ·
+            <a href="pricing.html">View pricing</a> ·
+            <a href="about.html">About Modario</a> ·
+            <a href="support.html">Get support</a>
+          </nav>
+        </div>
+      </section>
     </main>
 
     <div class="modal-layer" id="waitlist-layer" hidden>
@@ -124,6 +181,9 @@
       <span>Modario</span>
       <nav aria-label="Footer">
         <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
         <a href="#waitlist" data-open-waitlist>Waitlist</a>
         <a href="support.html">Support</a>
         <a href="terms.html">Terms</a>
