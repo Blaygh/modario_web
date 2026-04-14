@@ -443,6 +443,24 @@ h3 {
   justify-content: center;
 }
 
+.modario-intro {
+  margin-top: 2rem;
+  max-width: 860px;
+  margin-inline: auto;
+  padding: 1.25rem 1.1rem;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(245, 240, 236, 0.95));
+  border: 1px solid rgba(102, 0, 51, 0.16);
+  box-shadow: 0 16px 34px rgba(102, 0, 51, 0.09);
+}
+
+.modario-intro p {
+  margin: 0;
+  font-size: clamp(1.04rem, 2.5vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
 .btn,
 .waitlist-form button {
   text-decoration: none;
@@ -1083,6 +1101,7 @@ body[data-theme='dark'] .floating-header {
 body[data-theme='dark'] .support-card,
 body[data-theme='dark'] .support-faq,
 body[data-theme='dark'] .final-cta,
+body[data-theme='dark'] .modario-intro,
 body[data-theme='dark'] .site-modal,
 body[data-theme='dark'] .faq-item,
 body[data-theme='dark'] .testimonial,
