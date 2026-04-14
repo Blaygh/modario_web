@@ -504,7 +504,6 @@ h3 {
 .product-ui,
 .social-proof,
 .feature-strip,
-.instagram-section,
 .final-cta {
   padding: 0;
   border: 0;
@@ -671,32 +670,6 @@ h3 {
   margin-top: 1rem;
 }
 
-.instagram-section {
-  text-align: center;
-  max-width: 780px;
-  margin: 2.2rem auto 0;
-  padding: 2rem 1.1rem;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(102, 0, 51, 0.16);
-  box-shadow: 0 20px 40px rgba(102, 0, 51, 0.08);
-}
-
-.instagram-subtext {
-  margin: 0.7rem auto 1.2rem;
-  color: var(--text-secondary);
-}
-
-.instagram-subtext a {
-  color: var(--burgundy);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.instagram-section .instagram-media {
-  margin: 0 auto !important;
-}
-
 .waitlist-form {
   margin-top: 1.2rem;
   display: flex;
@@ -780,6 +753,20 @@ footer a {
 
 footer a:hover {
   color: var(--teal);
+}
+
+.footer-instagram-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.footer-instagram-link svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }
 
 
