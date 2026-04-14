@@ -754,8 +754,8 @@ h3 {
 footer {
   margin-bottom: 2rem;
   padding: 1rem 0;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 1rem;
   border-top: 1px solid var(--line);
@@ -763,12 +763,14 @@ footer {
 
 footer span {
   font-weight: 700;
+  justify-self: start;
 }
 
 footer nav {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
+  grid-column: 2;
 }
 
 footer a {
