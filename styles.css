@@ -769,6 +769,40 @@ footer a:hover {
   fill: currentColor;
 }
 
+@media (max-width: 699px) {
+  footer {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 0.85rem 0 1.1rem;
+  }
+
+  footer span {
+    justify-self: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+  }
+
+  footer nav {
+    grid-column: 1;
+    justify-content: center;
+    row-gap: 0.55rem;
+    column-gap: 0.7rem;
+  }
+
+  footer a {
+    font-size: 0.88rem;
+  }
+
+  .footer-instagram-link {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+}
+
 
 .modal-layer[hidden],
 .site-modal[hidden] {
