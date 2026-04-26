@@ -214,6 +214,21 @@ main {
   right: 8vw;
 }
 
+.ambient-bg-image--four {
+  top: 24vh;
+  left: 18vw;
+}
+
+.ambient-bg-image--five {
+  top: 58vh;
+  right: 28vw;
+}
+
+.ambient-bg-image--six {
+  top: 84vh;
+  left: 26vw;
+}
+
 .support-hero {
   margin-top: 4.25rem;
 }
@@ -892,6 +907,21 @@ footer a:hover {
   .ambient-bg-image--three {
     top: 73vh;
     right: -10vw;
+  }
+
+  .ambient-bg-image--four {
+    top: 27vh;
+    left: 8vw;
+  }
+
+  .ambient-bg-image--five {
+    top: 55vh;
+    right: 2vw;
+  }
+
+  .ambient-bg-image--six {
+    top: 83vh;
+    left: 2vw;
   }
 
   footer {
