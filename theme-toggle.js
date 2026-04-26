@@ -11,7 +11,9 @@
 
   const getStoredTheme = () => window.localStorage.getItem(THEME_KEY);
 
-  const getInitialTheme = () => getStoredTheme() || LIGHT_THEME;
+  const getSystemTheme = () => (window.matchMedia('(prefers-color-scheme: dark)').matches ? DARK_THEME : LIGHT_THEME);
+
+  const getInitialTheme = () => getStoredTheme() || getSystemTheme();
 
   const updateToggleLabel = (toggle, theme) => {
     const isDark = theme === DARK_THEME;
@@ -26,6 +28,13 @@
 
     let currentTheme = applyTheme(getInitialTheme());
     updateToggleLabel(toggle, currentTheme);
+
+    const systemThemeMedia = window.matchMedia('(prefers-color-scheme: dark)');
+    systemThemeMedia.addEventListener('change', () => {
+      if (getStoredTheme()) return;
+      currentTheme = applyTheme(getSystemTheme());
+      updateToggleLabel(toggle, currentTheme);
+    });
 
     toggle.addEventListener('click', () => {
       currentTheme = currentTheme === DARK_THEME ? LIGHT_THEME : DARK_THEME;
