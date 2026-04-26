@@ -26,6 +26,8 @@ body {
   background: radial-gradient(circle at 20% 0%, #fff 0%, var(--cream) 45%, #f6efec 100%);
   color: var(--text-primary);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  position: relative;
+  overflow-x: clip;
 }
 
 main,
@@ -169,6 +171,44 @@ body.is-scrolled .back-to-top-fab::before {
 
 main {
   padding: 4rem 0 4.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.ambient-bg-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: clip;
+}
+
+.ambient-bg-image {
+  --ambient-offset: 0px;
+  position: absolute;
+  width: clamp(220px, 33vw, 580px);
+  max-width: 44vw;
+  opacity: 0.24;
+  filter: saturate(0.74) blur(1.8px);
+  border-radius: 34px;
+  transform: translate3d(0, calc(var(--ambient-offset) * -1), 0) scale(1.04);
+  transition: opacity 320ms ease;
+  mix-blend-mode: multiply;
+}
+
+.ambient-bg-image--one {
+  top: 11vh;
+  right: -8vw;
+}
+
+.ambient-bg-image--two {
+  top: 41vh;
+  left: -11vw;
+}
+
+.ambient-bg-image--three {
+  top: 72vh;
+  right: 8vw;
 }
 
 .support-hero {
@@ -786,6 +826,27 @@ footer a:hover {
 }
 
 @media (max-width: 699px) {
+  .ambient-bg-image {
+    width: clamp(180px, 48vw, 320px);
+    max-width: 55vw;
+    opacity: 0.18;
+  }
+
+  .ambient-bg-image--one {
+    top: 15vh;
+    right: -15vw;
+  }
+
+  .ambient-bg-image--two {
+    top: 44vh;
+    left: -20vw;
+  }
+
+  .ambient-bg-image--three {
+    top: 73vh;
+    right: -10vw;
+  }
+
   footer {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -1026,6 +1087,10 @@ body.modal-open {
 
   .type-style::after {
     display: none;
+  }
+
+  .ambient-bg-image {
+    transform: none;
   }
 }
 
