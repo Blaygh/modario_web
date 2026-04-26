@@ -447,11 +447,7 @@ h3 {
   margin-top: 2rem;
   max-width: 860px;
   margin-inline: auto;
-  padding: 1.25rem 1.1rem;
-  border-radius: 22px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(245, 240, 236, 0.95));
-  border: 1px solid rgba(102, 0, 51, 0.16);
-  box-shadow: 0 16px 34px rgba(102, 0, 51, 0.09);
+  padding: 0.5rem 0.25rem;
 }
 
 .modario-intro p {
@@ -459,6 +455,26 @@ h3 {
   font-size: clamp(1.04rem, 2.5vw, 1.2rem);
   line-height: 1.6;
   color: var(--text-secondary);
+}
+
+.modario-intro-animated {
+  position: relative;
+  display: inline-block;
+  text-wrap: pretty;
+  animation: intro-fade-up 900ms ease-out 120ms both;
+}
+
+.modario-intro-animated::after {
+  content: '';
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: -0.35rem;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(198, 168, 107, 0), rgba(198, 168, 107, 0.85), rgba(198, 168, 107, 0));
+  background-size: 200% 100%;
+  animation: intro-shimmer 4.5s ease-in-out infinite;
 }
 
 .btn,
@@ -1151,7 +1167,6 @@ body[data-theme='dark'] .floating-header {
 body[data-theme='dark'] .support-card,
 body[data-theme='dark'] .support-faq,
 body[data-theme='dark'] .final-cta,
-body[data-theme='dark'] .modario-intro,
 body[data-theme='dark'] .site-modal,
 body[data-theme='dark'] .faq-item,
 body[data-theme='dark'] .testimonial,
@@ -1239,6 +1254,31 @@ body[data-theme='dark'] .theme-toggle {
   border-color: rgba(233, 237, 243, 0.28);
   background: rgba(233, 237, 243, 0.08);
   color: var(--text-primary);
+}
+
+@keyframes intro-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes intro-shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    opacity: 0.55;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 1;
+  }
 }
 
 @media (max-width: 640px) {
