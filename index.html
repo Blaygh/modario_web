@@ -68,6 +68,56 @@
     </header>
 
     <button type="button" class="back-to-top-fab" id="back-to-top" aria-label="Back to top">↑</button>
+    <div class="ambient-bg-layer" aria-hidden="true">
+      <img
+        class="ambient-bg-image ambient-bg-image--one"
+        src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/Welcome-Pages/screen-2/welcome1.png?quality=50"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+      />
+      <img
+        class="ambient-bg-image ambient-bg-image--two"
+        src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/Welcome-Pages/screen-3/welcome1.png?quality=50"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+      />
+      <img
+        class="ambient-bg-image ambient-bg-image--three"
+        src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/Welcome-Pages/screen-1/welcome1.png?quality=50"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+      />
+      <img
+        class="ambient-bg-image ambient-bg-image--four"
+        src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/Onboarding-Avatar-Cards/m11/white.png?quality=20"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+      />
+      <img
+        class="ambient-bg-image ambient-bg-image--five"
+        src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/avatars/v1/female/tan/plus-size.png?quality=20"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+      />
+      <img
+        class="ambient-bg-image ambient-bg-image--six"
+        src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/avatars/v1/female/fair/average.png?quality=20"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+      />
+    </div>
 
     <main>
       <section class="hero reveal" id="hero" aria-labelledby="hero-title">
@@ -95,9 +145,9 @@
         </div>
         <div class="story-visual mornings-gallery card-lift js-loop-gallery" aria-label="Outfit previews">
           <div class="mornings-gallery-track js-loop-track" id="mornings-gallery-track">
-            <figure class="mornings-gallery-item"><img src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/gym.png" alt="Planned for today outfit preview" /></figure>
-            <figure class="mornings-gallery-item"><img src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/date.png" alt="Next date outfit preview" /></figure>
-            <figure class="mornings-gallery-item"><img src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/official.png" alt="Office outfit preview" /></figure>
+            <figure class="mornings-gallery-item"><img src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/gym.png?quality=50" alt="Planned for today outfit preview" /></figure>
+            <figure class="mornings-gallery-item"><img src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/date.png?quality=50" alt="Next date outfit preview" /></figure>
+            <figure class="mornings-gallery-item"><img src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/official.png?quality=50" alt="Office outfit preview" /></figure>
           </div>
           <div class="mornings-gallery-controls" aria-label="Scroll outfit previews">
             <button type="button" class="gallery-btn" data-scroll="prev" aria-label="Scroll left">←</button>
@@ -143,7 +193,7 @@
         <p class="eyebrow feature-label-gold">Product UI</p>
         <h2 id="product-ui-title">An interface made for you.</h2>
         <div class="ui-gradient-card card-lift">
-          <img class="product-ui-image" src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/ui.png" alt="Modario screens" />
+          <img class="product-ui-image" src="https://bcaajafisvrttvinjfad.supabase.co/storage/v1/object/public/bucket-modario/UI/waitlist/ui.png?quality=50" alt="Modario screens" />
         </div>
       </section>
 
@@ -213,6 +263,7 @@
       const emailInput = document.getElementById('email');
       const statusElement = document.getElementById('form-status');
       const pageUrl = new URL(window.location.href);
+      const ambientBgImages = document.querySelectorAll('.ambient-bg-image');
 
       if (backToTopButton && floatingHeader) {
         const updateBackToTopVisibility = () => {
@@ -224,6 +275,31 @@
         window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
         updateBackToTopVisibility();
         backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      }
+
+      if (ambientBgImages.length) {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const updateAmbientMotion = (time = 0) => {
+          const scrollOffset = window.scrollY || 0;
+          ambientBgImages.forEach((image, index) => {
+            const speed = Number.parseFloat(image.dataset.scrollSpeed) || (index + 1) * 0.04;
+            const phase = Number.parseFloat(image.dataset.motionPhase) || 0;
+            const motionRange = Number.parseFloat(image.dataset.motionRange) || 0;
+            const driftX = prefersReducedMotion ? 0 : Math.sin(time * 0.00045 + phase) * motionRange;
+            const driftY = prefersReducedMotion ? 0 : Math.cos(time * 0.00033 + phase) * (motionRange * 1.35);
+            image.style.setProperty('--ambient-offset', `${scrollOffset * speed}px`);
+            image.style.setProperty('--ambient-drift-x', `${driftX.toFixed(2)}px`);
+            image.style.setProperty('--ambient-drift-y', `${driftY.toFixed(2)}px`);
+          });
+          window.requestAnimationFrame(updateAmbientMotion);
+        };
+
+        ambientBgImages.forEach((image, index) => {
+          image.dataset.scrollSpeed = (0.028 + index * 0.018).toFixed(3);
+          image.dataset.motionPhase = (index * 1.45 + 0.6).toFixed(3);
+          image.dataset.motionRange = (6 + index * 2).toFixed(3);
+        });
+        window.requestAnimationFrame(updateAmbientMotion);
       }
 
       const setWaitlistOpen = (isOpen) => {
