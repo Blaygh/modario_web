@@ -459,8 +459,11 @@ h3 {
 
 .modario-intro-animated {
   position: relative;
-  display: inline-block;
+  display: grid;
+  gap: 0.2rem;
   text-wrap: pretty;
+  font-size: clamp(1.08rem, 2.7vw, 1.24rem);
+  letter-spacing: -0.01em;
   animation: intro-fade-up 900ms ease-out 120ms both;
 }
 
@@ -475,6 +478,47 @@ h3 {
   background: linear-gradient(90deg, rgba(198, 168, 107, 0), rgba(198, 168, 107, 0.85), rgba(198, 168, 107, 0));
   background-size: 200% 100%;
   animation: intro-shimmer 4.5s ease-in-out infinite;
+}
+
+.intro-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: intro-line-reveal 650ms ease forwards;
+}
+
+.intro-line:nth-child(1) {
+  animation-delay: 140ms;
+}
+
+.intro-line:nth-child(2) {
+  animation-delay: 290ms;
+}
+
+.intro-line:nth-child(3) {
+  animation-delay: 430ms;
+}
+
+.intro-line:nth-child(4) {
+  animation-delay: 560ms;
+}
+
+.intro-highlight-burgundy {
+  color: var(--burgundy);
+  font-weight: 700;
+}
+
+.intro-highlight-green {
+  color: var(--sage);
+  font-weight: 700;
+}
+
+.intro-emphasis {
+  font-size: 1.08em;
+  font-weight: 800;
+  color: var(--burgundy);
+  text-shadow: 0 4px 14px rgba(102, 0, 51, 0.16);
+  animation: intro-word-pop 2.8s ease-in-out infinite;
 }
 
 .btn,
@@ -1256,6 +1300,15 @@ body[data-theme='dark'] .theme-toggle {
   color: var(--text-primary);
 }
 
+body[data-theme='dark'] .intro-highlight-burgundy,
+body[data-theme='dark'] .intro-emphasis {
+  color: #f0a7c4;
+}
+
+body[data-theme='dark'] .intro-highlight-green {
+  color: #9cd8b0;
+}
+
 @keyframes intro-fade-up {
   from {
     opacity: 0;
@@ -1278,6 +1331,25 @@ body[data-theme='dark'] .theme-toggle {
   50% {
     background-position: 100% 50%;
     opacity: 1;
+  }
+}
+
+@keyframes intro-line-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes intro-word-pop {
+  0%,
+  100% {
+    transform: translateY(0);
+    filter: saturate(1);
+  }
+  50% {
+    transform: translateY(-1px);
+    filter: saturate(1.2);
   }
 }
 
