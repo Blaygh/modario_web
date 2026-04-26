@@ -185,15 +185,18 @@ main {
 
 .ambient-bg-image {
   --ambient-offset: 0px;
+  --ambient-drift-x: 0px;
+  --ambient-drift-y: 0px;
   position: absolute;
-  width: clamp(220px, 33vw, 580px);
-  max-width: 44vw;
-  opacity: 0.24;
+  width: clamp(140px, 22vw, 300px);
+  max-width: 30vw;
+  opacity: 0.21;
   filter: saturate(0.74) blur(1.8px);
   border-radius: 34px;
-  transform: translate3d(0, calc(var(--ambient-offset) * -1), 0) scale(1.04);
-  transition: opacity 320ms ease;
+  transform: translate3d(var(--ambient-drift-x), calc((var(--ambient-offset) * -1) + var(--ambient-drift-y)), 0) scale(1.02);
+  transition: opacity 320ms ease, transform 420ms ease-out;
   mix-blend-mode: multiply;
+  will-change: transform;
 }
 
 .ambient-bg-image--one {
@@ -871,9 +874,9 @@ footer a:hover {
 
 @media (max-width: 699px) {
   .ambient-bg-image {
-    width: clamp(180px, 48vw, 320px);
-    max-width: 55vw;
-    opacity: 0.18;
+    width: clamp(120px, 34vw, 220px);
+    max-width: 42vw;
+    opacity: 0.15;
   }
 
   .ambient-bg-image--one {
@@ -1135,6 +1138,7 @@ body.modal-open {
 
   .ambient-bg-image {
     transform: none;
+    transition: none;
   }
 }
 

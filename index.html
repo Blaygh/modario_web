@@ -262,30 +262,28 @@
       }
 
       if (ambientBgImages.length) {
-        let isTicking = false;
-        const updateAmbientScroll = () => {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const updateAmbientMotion = (time = 0) => {
           const scrollOffset = window.scrollY || 0;
           ambientBgImages.forEach((image, index) => {
             const speed = Number.parseFloat(image.dataset.scrollSpeed) || (index + 1) * 0.04;
+            const phase = Number.parseFloat(image.dataset.motionPhase) || 0;
+            const motionRange = Number.parseFloat(image.dataset.motionRange) || 0;
+            const driftX = prefersReducedMotion ? 0 : Math.sin(time * 0.00045 + phase) * motionRange;
+            const driftY = prefersReducedMotion ? 0 : Math.cos(time * 0.00033 + phase) * (motionRange * 1.35);
             image.style.setProperty('--ambient-offset', `${scrollOffset * speed}px`);
+            image.style.setProperty('--ambient-drift-x', `${driftX.toFixed(2)}px`);
+            image.style.setProperty('--ambient-drift-y', `${driftY.toFixed(2)}px`);
           });
-          isTicking = false;
+          window.requestAnimationFrame(updateAmbientMotion);
         };
 
         ambientBgImages.forEach((image, index) => {
           image.dataset.scrollSpeed = (0.028 + index * 0.018).toFixed(3);
+          image.dataset.motionPhase = (index * 1.45 + 0.6).toFixed(3);
+          image.dataset.motionRange = (6 + index * 2).toFixed(3);
         });
-
-        window.addEventListener(
-          'scroll',
-          () => {
-            if (isTicking) return;
-            isTicking = true;
-            window.requestAnimationFrame(updateAmbientScroll);
-          },
-          { passive: true }
-        );
-        updateAmbientScroll();
+        window.requestAnimationFrame(updateAmbientMotion);
       }
 
       const setWaitlistOpen = (isOpen) => {
