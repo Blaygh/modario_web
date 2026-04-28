@@ -685,43 +685,52 @@ h3 {
   color: rgba(26, 26, 26, 0.72);
 }
 
-.device-availability {
-  margin-top: 1rem;
+.ios-outline-btn {
+  background: rgba(15, 76, 92, 0.08);
+  border-color: rgba(15, 76, 92, 0.32);
+  color: var(--teal);
+}
+
+.ios-download-panel {
+  margin-top: 2.2rem;
+  max-width: 980px;
+  margin-inline: auto;
+  border: 1px solid rgba(102, 0, 51, 0.14);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 16px 32px rgba(102, 0, 51, 0.1);
+  padding: 1.4rem 1.1rem;
   display: grid;
-  gap: 0.7rem;
-  max-width: 560px;
+  gap: 1.25rem;
+}
+
+.ios-download-copy p {
   margin-inline: auto;
 }
 
-.device-chip {
-  border-radius: 14px;
-  border: 1px solid rgba(15, 76, 92, 0.15);
-  background: rgba(255, 255, 255, 0.85);
-  padding: 0.8rem 0.9rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.7rem;
-  text-align: left;
+.ios-download-actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
 }
 
-.device-chip .device-icon {
-  font-size: 1.1rem;
-}
-
-.device-chip h3 {
+.ios-device-notes {
+  list-style: none;
   margin: 0;
-  font-size: 0.98rem;
-  color: var(--charcoal);
+  padding: 0.95rem;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 76, 92, 0.2);
+  background: rgba(15, 76, 92, 0.06);
+  text-align: left;
+  display: grid;
+  gap: 0.45rem;
 }
 
-.device-chip p {
-  margin-top: 0.2rem;
-  font-size: 0.86rem;
+.ios-device-notes li {
+  font-size: 0.95rem;
   color: var(--text-secondary);
-}
-
-.device-chip--unsupported {
-  border-color: rgba(102, 0, 51, 0.22);
 }
 
 .story,
@@ -1461,23 +1470,19 @@ body[data-theme='dark'] .availability-note {
   color: rgba(248, 242, 233, 0.8);
 }
 
-body[data-theme='dark'] .launch-banner p {
-  border-color: rgba(158, 215, 223, 0.3);
-  background: rgba(15, 76, 92, 0.28);
-  color: #c7eef4;
-}
-
-body[data-theme='dark'] .device-chip {
-  background: rgba(20, 27, 36, 0.84);
+body[data-theme='dark'] .ios-download-panel {
+  background: rgba(20, 27, 36, 0.9);
   border-color: rgba(233, 237, 243, 0.18);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.34);
 }
 
-body[data-theme='dark'] .device-chip h3 {
-  color: #f7f8fa;
+body[data-theme='dark'] .ios-device-notes {
+  background: rgba(15, 76, 92, 0.2);
+  border-color: rgba(158, 215, 223, 0.35);
 }
 
-body[data-theme='dark'] .device-chip p {
-  color: rgba(233, 237, 243, 0.82);
+body[data-theme='dark'] .ios-device-notes li {
+  color: rgba(233, 237, 243, 0.86);
 }
 
 body[data-theme='dark'] .pricing-table {
