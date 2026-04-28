@@ -618,6 +618,46 @@ h3 {
   display: none;
 }
 
+.app-store-badge {
+  gap: 0.72rem;
+  background: #111;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.34);
+  padding: 0.65rem 1.15rem;
+}
+
+.app-store-badge svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.app-store-badge span {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+}
+
+.app-store-badge span strong {
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.app-store-badge span {
+  font-size: 1.06rem;
+  font-weight: 600;
+}
+
+.availability-note {
+  margin-top: 0.9rem;
+  font-size: 0.9rem;
+  color: rgba(26, 26, 26, 0.72);
+}
+
 .story,
 .product-ui,
 .social-proof,
@@ -1349,6 +1389,10 @@ body[data-theme='dark'] .header-cta {
 
 body[data-theme='dark'] .header-cta:hover {
   background: #892f52;
+}
+
+body[data-theme='dark'] .availability-note {
+  color: rgba(248, 242, 233, 0.8);
 }
 
 body[data-theme='dark'] .pricing-table {

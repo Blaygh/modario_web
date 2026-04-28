@@ -21,7 +21,6 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="./runtime-config.js"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -50,7 +49,7 @@
         "@type": "SoftwareApplication",
         "name": "Modario",
         "applicationCategory": "LifestyleApplication",
-        "operatingSystem": "iOS, Android",
+        "operatingSystem": "iOS",
         "description": "Modario helps users plan outfits with weather-aware recommendations and a virtual wardrobe.",
         "url": "https://www.modario.io/"
       }
@@ -63,7 +62,7 @@
       </a>
       <div class="header-controls">
         <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false">Dark</button>
-        <a class="header-cta" href="#waitlist" data-open-waitlist>Join Waitlist</a>
+        <a class="header-cta" href="https://apps.apple.com" target="_blank" rel="noopener noreferrer">Download on iOS</a>
       </div>
     </header>
 
@@ -124,9 +123,15 @@
         <p class="eyebrow feature-label-gold">AI Fashion Stylist</p>
         <h1 id="hero-title" class="hero-title"><span class="type-style">Dress</span><span class="with-modario">better with Modario</span></h1>
         <div class="hero-cta-row">
-          <a class="btn primary" href="#waitlist" data-open-waitlist>Join the Waitlist</a>
+          <a class="btn app-store-badge" href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" aria-label="Download Modario on the App Store">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M16.71 13.45c.02 2.25 2 3 2.02 3.01-.02.05-.31 1.07-1.03 2.13-.62.92-1.27 1.84-2.29 1.86-1 .02-1.32-.59-2.46-.59-1.15 0-1.5.57-2.43.61-1 .04-1.74-.99-2.37-1.91-1.3-1.89-2.3-5.34-.96-7.67.66-1.16 1.84-1.89 3.12-1.91.97-.02 1.89.66 2.46.66.57 0 1.63-.81 2.75-.69.47.02 1.79.19 2.64 1.43-.07.04-1.58.92-1.56 3.07ZM14.72 4.98c.52-.63.87-1.51.77-2.38-.75.03-1.67.5-2.2 1.13-.48.56-.9 1.45-.79 2.3.83.06 1.69-.42 2.22-1.05Z" />
+            </svg>
+            <span><strong>Download on the</strong>App Store</span>
+          </a>
           <a class="btn secondary is-invisible" href="support.html" aria-hidden="true" tabindex="-1">Support Development</a>
         </div>
+        <p class="availability-note">Available for iPhone on iOS. Not available on laptops or tablets.</p>
       </section>
 
       <section class="modario-intro reveal" aria-labelledby="modario-intro-title">
@@ -204,29 +209,18 @@
         </div>
       </section>
 
-      <section class="final-cta reveal" aria-labelledby="waitlist-title">
-        <h2 id="waitlist-title">Join Modario</h2>
-        <p>Embody your style. Be among the first to get the app.</p>
-        <a class="btn primary" href="#waitlist" data-open-waitlist>Join the Waitlist</a>
+      <section class="final-cta reveal" aria-labelledby="download-title">
+        <h2 id="download-title">Download Modario</h2>
+        <p>Modario is now live on iOS for iPhone.</p>
+        <a class="btn app-store-badge" href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" aria-label="Download Modario on the App Store">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M16.71 13.45c.02 2.25 2 3 2.02 3.01-.02.05-.31 1.07-1.03 2.13-.62.92-1.27 1.84-2.29 1.86-1 .02-1.32-.59-2.46-.59-1.15 0-1.5.57-2.43.61-1 .04-1.74-.99-2.37-1.91-1.3-1.89-2.3-5.34-.96-7.67.66-1.16 1.84-1.89 3.12-1.91.97-.02 1.89.66 2.46.66.57 0 1.63-.81 2.75-.69.47.02 1.79.19 2.64 1.43-.07.04-1.58.92-1.56 3.07ZM14.72 4.98c.52-.63.87-1.51.77-2.38-.75.03-1.67.5-2.2 1.13-.48.56-.9 1.45-.79 2.3.83.06 1.69-.42 2.22-1.05Z" />
+          </svg>
+          <span><strong>Download on the</strong>App Store</span>
+        </a>
       </section>
 
     </main>
-
-    <div class="modal-layer" id="waitlist-layer" hidden>
-      <section class="site-modal" id="waitlist-modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-modal-title">
-        <button type="button" class="modal-close" id="waitlist-close" aria-label="Close waitlist modal">×</button>
-        <section class="final-cta reveal" id="waitlist" aria-labelledby="waitlist-modal-title">
-          <h2 id="waitlist-modal-title">Join the Modario Waitlist</h2>
-          <p>Be first to try weather-aware outfit planning and your virtual wardrobe.</p>
-          <form class="waitlist-form" aria-label="Waitlist form" data-function-name="join-waitlist">
-            <label class="sr-only" for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="Email" required />
-            <button type="submit">Join Waitlist</button>
-          </form>
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-        </section>
-      </section>
-    </div>
 
     <footer>
       <span>© 2026 Modario LLC. All rights reserved.</span>
@@ -234,7 +228,7 @@
         <a href="features.html">Features</a>
         <a href="pricing.html">Pricing</a>
         <a href="about.html">About</a>
-        <a href="#waitlist" data-open-waitlist>Waitlist</a>
+        <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer">iOS Download</a>
         <a href="support.html">Support</a>
         <a href="terms.html">Terms</a>
         <a href="privacy.html">Privacy</a>
@@ -252,24 +246,10 @@
       </nav>
     </footer>
     <script type="module">
-      window.MODARIO_SUPABASE = window.MODARIO_SUPABASE || {
-        url: 'https://bcaajafisvrttvinjfad.supabase.co',
-        anonKey: 'sb_publishable_EzlbWXkh0hMbajPO63X6Vg_wvqTXvLh',
-        functionName: 'join-waitlist',
-      };
-
       const loopGalleryTracks = document.querySelectorAll('.js-loop-track');
       const featureStories = document.querySelectorAll('.feature-story');
       const backToTopButton = document.getElementById('back-to-top');
       const floatingHeader = document.querySelector('.floating-header');
-      const waitlistLayer = document.getElementById('waitlist-layer');
-      const waitlistModal = document.getElementById('waitlist-modal');
-      const waitlistClose = document.getElementById('waitlist-close');
-      const waitlistLinks = document.querySelectorAll('[data-open-waitlist]');
-      const waitlistForm = waitlistModal?.querySelector('.waitlist-form');
-      const emailInput = document.getElementById('email');
-      const statusElement = document.getElementById('form-status');
-      const pageUrl = new URL(window.location.href);
       const ambientBgImages = document.querySelectorAll('.ambient-bg-image');
 
       if (backToTopButton && floatingHeader) {
@@ -308,108 +288,6 @@
         });
         window.requestAnimationFrame(updateAmbientMotion);
       }
-
-      const setWaitlistOpen = (isOpen) => {
-        if (!waitlistLayer) return;
-        waitlistLayer.hidden = !isOpen;
-        document.body.classList.toggle('modal-open', isOpen);
-        if (isOpen) {
-          window.history.replaceState({}, '', `${window.location.pathname}#waitlist`);
-          window.setTimeout(() => emailInput?.focus(), 0);
-        } else if (window.location.hash === '#waitlist') {
-          window.history.replaceState({}, '', window.location.pathname);
-        }
-      };
-
-      waitlistLinks.forEach((link) => {
-        link.addEventListener('click', (event) => {
-          event.preventDefault();
-          setWaitlistOpen(true);
-        });
-      });
-
-      waitlistClose?.addEventListener('click', () => setWaitlistOpen(false));
-      waitlistLayer?.addEventListener('click', (event) => {
-        if (event.target === waitlistLayer) setWaitlistOpen(false);
-      });
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') setWaitlistOpen(false);
-      });
-
-      if (window.location.hash === '#waitlist') {
-        setWaitlistOpen(true);
-      }
-
-      const configuredFunctionName = waitlistForm?.dataset.functionName?.trim() || '';
-      const supabaseConfig = window.MODARIO_SUPABASE || {};
-      const functionName = configuredFunctionName || supabaseConfig.functionName || '';
-      const supabaseUrl = supabaseConfig.url || '';
-      const supabaseAnonKey = supabaseConfig.anonKey || '';
-
-      const getFunctionEndpoint = () => {
-        if (!supabaseUrl || !functionName) return '';
-        return `${supabaseUrl.replace(/\/$/, '')}/functions/v1/${functionName}`;
-      };
-
-      const setFormStatus = (message, state) => {
-        if (!statusElement) return;
-        statusElement.textContent = message;
-        statusElement.dataset.state = state;
-      };
-
-      const getMetadata = () => ({
-        submitted_at: new Date().toISOString(),
-        source_page: pageUrl.pathname,
-        full_url: pageUrl.toString(),
-        referrer: document.referrer || null,
-        user_agent: navigator.userAgent,
-      });
-
-      waitlistForm?.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const submitButton = waitlistForm.querySelector('button[type="submit"]');
-        const email = emailInput?.value.trim() || '';
-        const singleEmailRegex = /^[^\s@,]+@[^\s@,]+\.[^\s@,]+$/;
-
-        if (!singleEmailRegex.test(email)) {
-          setFormStatus('Please enter one valid email address.', 'error');
-          return;
-        }
-
-        const functionEndpoint = getFunctionEndpoint();
-        if (!functionEndpoint || !supabaseAnonKey) {
-          setFormStatus('Configuration error. Please try again later.', 'error');
-          return;
-        }
-
-        submitButton.disabled = true;
-        submitButton.textContent = 'Submitting...';
-        setFormStatus('Submitting your request...', 'pending');
-
-        try {
-          const response = await fetch(functionEndpoint, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              apikey: supabaseAnonKey,
-              Authorization: `Bearer ${supabaseAnonKey}`,
-            },
-            body: JSON.stringify({ email, metadata: getMetadata() }),
-          });
-
-          if (!response.ok) {
-            throw new Error(`Waitlist request failed with status ${response.status}`);
-          }
-
-          waitlistForm.reset();
-          setFormStatus('Success! You have been added to the waitlist.', 'success');
-        } catch (_error) {
-          setFormStatus('We could not submit your email. Please try again.', 'error');
-        } finally {
-          submitButton.disabled = false;
-          submitButton.textContent = 'Join Waitlist';
-        }
-      });
 
       loopGalleryTracks.forEach((track) => {
         const gallery = track.closest('.js-loop-gallery');
