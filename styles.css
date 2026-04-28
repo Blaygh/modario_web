@@ -618,6 +618,94 @@ h3 {
   display: none;
 }
 
+.app-store-badge {
+  gap: 0.72rem;
+  background: #111;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.34);
+  padding: 0.65rem 1.15rem;
+}
+
+.app-store-badge svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.app-store-badge span {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+}
+
+.app-store-badge span strong {
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.app-store-badge span {
+  font-size: 1.06rem;
+  font-weight: 600;
+}
+
+.availability-note {
+  margin-top: 0.9rem;
+  font-size: 0.9rem;
+  color: rgba(26, 26, 26, 0.72);
+}
+
+.ios-outline-btn {
+  background: rgba(15, 76, 92, 0.08);
+  border-color: rgba(15, 76, 92, 0.32);
+  color: var(--teal);
+}
+
+.ios-download-panel {
+  margin-top: 2.2rem;
+  max-width: 980px;
+  margin-inline: auto;
+  border: 1px solid rgba(102, 0, 51, 0.14);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 16px 32px rgba(102, 0, 51, 0.1);
+  padding: 1.4rem 1.1rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.ios-download-copy p {
+  margin-inline: auto;
+}
+
+.ios-download-actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+}
+
+.ios-device-notes {
+  list-style: none;
+  margin: 0;
+  padding: 0.95rem;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 76, 92, 0.2);
+  background: rgba(15, 76, 92, 0.06);
+  text-align: left;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.ios-device-notes li {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
 .story,
 .product-ui,
 .social-proof,
@@ -1349,6 +1437,25 @@ body[data-theme='dark'] .header-cta {
 
 body[data-theme='dark'] .header-cta:hover {
   background: #892f52;
+}
+
+body[data-theme='dark'] .availability-note {
+  color: rgba(248, 242, 233, 0.8);
+}
+
+body[data-theme='dark'] .ios-download-panel {
+  background: rgba(20, 27, 36, 0.9);
+  border-color: rgba(233, 237, 243, 0.18);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.34);
+}
+
+body[data-theme='dark'] .ios-device-notes {
+  background: rgba(15, 76, 92, 0.2);
+  border-color: rgba(158, 215, 223, 0.35);
+}
+
+body[data-theme='dark'] .ios-device-notes li {
+  color: rgba(233, 237, 243, 0.86);
 }
 
 body[data-theme='dark'] .pricing-table {
