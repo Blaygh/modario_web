@@ -22,7 +22,7 @@ Modario is a fashion technology company focused on reducing outfit decision fati
 
 ## Current Public Experience
 - Landing page highlights product benefits and visuals.
-- Dedicated waitlist page captures early-access interest.
+- Download links direct users to the iOS App Store listing.
 - Support page allows users to back development ahead of future Stripe checkout rollout.
 
 ## Legal & Trust Signals
