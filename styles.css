@@ -132,18 +132,37 @@ body.is-scrolled .back-to-top-fab::before {
   transform: translateY(0) scale(0.95);
 }
 .header-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 44px;
   text-decoration: none;
   color: #fff;
-  background: #5a002d;
+  background: linear-gradient(135deg, #660033, #7b1f49);
   border: 1px solid rgba(102, 0, 51, 0.36);
   border-radius: 999px;
-  padding: 10px 16px;
+  padding: 10px 14px;
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  box-shadow: 0 10px 22px rgba(102, 0, 51, 0.2);
 }
 
 .header-cta:hover {
-  background: #4d0026;
+  background: linear-gradient(135deg, #5c002e, #701b42);
+}
+
+.header-cta svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.header-cta .mobile-label {
+  display: none;
 }
 
 .header-controls {
@@ -501,33 +520,6 @@ h3 {
   justify-content: center;
 }
 
-.launch-banner {
-  margin-top: 2rem;
-}
-
-.launch-banner p {
-  margin-inline: auto;
-  max-width: 44ch;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 0.95rem;
-  border-radius: 999px;
-  border: 1px solid rgba(15, 76, 92, 0.28);
-  background: rgba(15, 76, 92, 0.08);
-  color: var(--teal);
-  font-size: 0.92rem;
-  font-weight: 600;
-}
-
-.launch-dot {
-  width: 0.6rem;
-  height: 0.6rem;
-  border-radius: 999px;
-  background: #2cb67d;
-  box-shadow: 0 0 0 6px rgba(44, 182, 125, 0.15);
-}
-
 .modario-intro {
   margin-top: 2rem;
   max-width: 860px;
@@ -593,8 +585,8 @@ h3 {
   font-weight: 700;
 }
 
-.intro-highlight-green {
-  color: var(--sage);
+.intro-highlight-burgundy-soft {
+  color: #8b3d5e;
   font-weight: 700;
 }
 
@@ -647,10 +639,11 @@ h3 {
 
 .app-store-badge {
   gap: 0.72rem;
-  background: #111;
+  background: linear-gradient(135deg, #660033, #7b1f49);
   color: #fff;
-  border-color: rgba(255, 255, 255, 0.34);
+  border-color: rgba(102, 0, 51, 0.34);
   padding: 0.65rem 1.15rem;
+  box-shadow: 0 16px 30px rgba(102, 0, 51, 0.18);
 }
 
 .app-store-badge svg {
@@ -677,51 +670,6 @@ h3 {
 .app-store-badge span {
   font-size: 1.06rem;
   font-weight: 600;
-}
-
-.availability-note {
-  margin-top: 0.9rem;
-  font-size: 0.9rem;
-  color: rgba(26, 26, 26, 0.72);
-}
-
-.device-availability {
-  margin-top: 1rem;
-  display: grid;
-  gap: 0.7rem;
-  max-width: 560px;
-  margin-inline: auto;
-}
-
-.device-chip {
-  border-radius: 14px;
-  border: 1px solid rgba(15, 76, 92, 0.15);
-  background: rgba(255, 255, 255, 0.85);
-  padding: 0.8rem 0.9rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.7rem;
-  text-align: left;
-}
-
-.device-chip .device-icon {
-  font-size: 1.1rem;
-}
-
-.device-chip h3 {
-  margin: 0;
-  font-size: 0.98rem;
-  color: var(--charcoal);
-}
-
-.device-chip p {
-  margin-top: 0.2rem;
-  font-size: 0.86rem;
-  color: var(--text-secondary);
-}
-
-.device-chip--unsupported {
-  border-color: rgba(102, 0, 51, 0.22);
 }
 
 .story,
@@ -1449,35 +1397,12 @@ body[data-theme='dark'] .site-modal a {
 
 body[data-theme='dark'] .header-cta {
   color: #fff;
-  background: #7a2546;
+  background: linear-gradient(135deg, #8f3658, #a74970);
   border-color: rgba(245, 216, 171, 0.28);
 }
 
 body[data-theme='dark'] .header-cta:hover {
-  background: #892f52;
-}
-
-body[data-theme='dark'] .availability-note {
-  color: rgba(248, 242, 233, 0.8);
-}
-
-body[data-theme='dark'] .launch-banner p {
-  border-color: rgba(158, 215, 223, 0.3);
-  background: rgba(15, 76, 92, 0.28);
-  color: #c7eef4;
-}
-
-body[data-theme='dark'] .device-chip {
-  background: rgba(20, 27, 36, 0.84);
-  border-color: rgba(233, 237, 243, 0.18);
-}
-
-body[data-theme='dark'] .device-chip h3 {
-  color: #f7f8fa;
-}
-
-body[data-theme='dark'] .device-chip p {
-  color: rgba(233, 237, 243, 0.82);
+  background: linear-gradient(135deg, #9b4264, #b35679);
 }
 
 body[data-theme='dark'] .pricing-table {
@@ -1533,8 +1458,8 @@ body[data-theme='dark'] .intro-emphasis {
   color: #f0a7c4;
 }
 
-body[data-theme='dark'] .intro-highlight-green {
-  color: #9cd8b0;
+body[data-theme='dark'] .intro-highlight-burgundy-soft {
+  color: #d08aaa;
 }
 
 @keyframes intro-fade-up {
@@ -1665,6 +1590,27 @@ body[data-theme='dark'] .intro-highlight-green {
 }
 
 @media (max-width: 700px) {
+  .floating-header {
+    padding: 0.42rem 0.6rem;
+  }
+
+  .header-brand {
+    width: min(150px, 43vw);
+  }
+
+  .header-cta {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+
+  .header-cta .desktop-label {
+    display: none;
+  }
+
+  .header-cta .mobile-label {
+    display: inline;
+  }
+
   .site-home .floating-header {
     flex-wrap: wrap;
     gap: 0.55rem;
